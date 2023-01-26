@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState} from 'react'
 import { Routes, Route } from 'react-router-dom'
 
+import { getUser } from '../../utilities/users-service';
+
 import AuthPage from '../AuthPage/AuthPage';
 import LandingPage from '../LandingPage/LandingPage';
 import MyWatchPage from '../MyWatchPage/MyWatchPage';
@@ -17,13 +19,13 @@ import NavBar from '../../components/NavBar/NavBar';
 
 
 export default function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(getUser());
 
   return (
    <main className='App'>
    { user ?
    <>
-      <NavBar />
+      <NavBar user={user} setUser={setUser}/>
       <Routes>
         <Route path="/" element = {<LandingPage/>} />
         <Route path="/search" element = {<SearchPage/>} />
@@ -33,7 +35,7 @@ export default function App() {
    </>
 
       :
-      <AuthPage />
+      <AuthPage setUser={setUser}/>
     }
    </main>
   );
