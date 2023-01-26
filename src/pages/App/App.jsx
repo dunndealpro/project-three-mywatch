@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useState} from 'react'
@@ -16,8 +16,8 @@ import NavBar from '../../components/NavBar/NavBar';
 
 
 
-function App() {
-  const [user, setUser] = useState({});
+export default function App() {
+  const [user, setUser] = useState(null);
 
   return (
    <main className='App'>
@@ -39,4 +39,4 @@ function App() {
   );
 }
 
-export default App;
+
