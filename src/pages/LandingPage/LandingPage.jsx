@@ -28,13 +28,13 @@ export default function LandingPage(props) {
                 <SearchBox />
                 <Container className='w-75 text-center'>
                     <div className='fs-2'>Trending Today!</div>
-
+                    
                     <Carousel className='m-2'>
-                        {props.landingPoster.results.map((posterUrl) =>
-                            <Carousel.Item className='' interval={3500}>                                <LandingPoster
+                        {props.landingPoster.results && props.landingPoster.results.map((posterUrl) =>
+                            <Carousel.Item className='' interval={3500}>
+                                <LandingPoster
                                     key={posterUrl.id}
                                     posterUrl={posterUrl} />
-
                             </Carousel.Item>
                         )}
                     </Carousel>

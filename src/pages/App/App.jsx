@@ -17,7 +17,7 @@ import NavBar from '../../components/NavBar/NavBar';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [landingPoster, setLandingPoster] = useState()
+  const [landingPoster, setLandingPoster] = useState({})
 
 
   const API_KEY = "a72c1d466153d06b65f2879b369031d8"
@@ -29,12 +29,18 @@ export default function App() {
       setLandingPoster(response)
     } catch (error) {
       console.log("Error! ", error)
-    }
+    }     
   }
+  
 
   useEffect(() => {
+    console.log("I fire once!")
     getLandingPoster()
-  }, [])
+    
+    }, [])
+
+  //   // getLandingPoster()
+  // }, [])
 
 
 
@@ -46,7 +52,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<LandingPage
               landingPoster={landingPoster}
-              getLandingPoster={getLandingPoster}
+              // getLandingPoster={getLandingPoster}
             />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/mywatch" element={<MyWatchPage />} />

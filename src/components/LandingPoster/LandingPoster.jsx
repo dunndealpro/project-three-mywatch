@@ -23,7 +23,7 @@ export default function LandingPoster(props) {
                     <div className="rounded-2 bg-dark m-2 p-2 ">
                     <h3>{trendingTitle}</h3>
                     <SummaryText trendingOverview = {trendingOverview}/>
-                    {/* <p>{trendingOverview}</p> */}
+                    
                     </div>
                 </Carousel.Caption>
 
