@@ -4,10 +4,18 @@ import SummaryText from '../SummaryText/SummaryText';
 export default function LandingPoster(props) {
     // let trending1Url
 
-    console.log("test  ", props.posterUrl.backdrop_path)
+    // console.log("test  ", props.posterUrl.backdrop_path)
     let trendingUrl = `https://image.tmdb.org/t/p/original/${props.posterUrl.backdrop_path}`
-    let trendingTitle = props.posterUrl.title
+    let trendingTitle
     let trendingOverview = props.posterUrl.overview
+
+
+if (props.posterUrl.title){
+    trendingTitle= props.posterUrl.title
+}else{
+    trendingTitle=props.posterUrl.name
+}
+
 
 
     // if (props.landingPoster) {
