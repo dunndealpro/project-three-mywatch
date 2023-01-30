@@ -48,6 +48,7 @@ export default function LandingPage(props) {
                 />
                 <SearchResults 
                     searchResults={props.searchResults}
+                    handleAddToMyWatch={props.handleAddToMyWatch}
                     />
 
             </Container>

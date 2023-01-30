@@ -19,10 +19,11 @@ export default function SearchResults(props) {
                     </div>
                 <Container>
                     <Row>
-                    {props.searchResults.results.map((result) => (                        
+                    {props.searchResults.results && props.searchResults.results.map((result) => (                        
                         <SearchResult
                             key={result.id}
                             result={result}
+                            handleAddToMyWatch={props.handleAddToMyWatch}
                         />
                     ))}
 

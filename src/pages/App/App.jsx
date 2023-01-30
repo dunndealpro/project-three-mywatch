@@ -13,6 +13,7 @@ import SearchPage from '../SearchPage/SearchPage';
 
 import NavBar from '../../components/NavBar/NavBar';
 
+import * as myWatchAPI from "../../utilities/myWatch-api"
 
 
 export default function App() {
@@ -54,11 +55,22 @@ export default function App() {
     }
     console.log(search)
   }
+
+  async function handleAddToMyWatch(selectId, selectTitle, check) {
+    console.log("Add to my selects ", selectId, selectTitle)
+    const movie = await myWatchAPI.addToMyWatch(selectId, selectTitle)
+    // const myMovie = await usersAPI.addToMyMovies(movieId)
+    console.log(movie)
+    // console.log("User Model My Movies?", myMovie)
+    // getAlreadyWatchedMovies()
+    // setSelectedMovie(selectedMovie)
+    // setSelectedDisplay(selectedDisplay)
+    // setSearch(search)
+  }
   
 
   useEffect(() => {
-    console.log("I fire once!")
-    
+    console.log("I fire once!")    
     getLandingPoster()
     
     }, [])
@@ -80,6 +92,7 @@ export default function App() {
               setSearch={setSearch}
               getSearch={getSearch}
               searchResults={searchResults}
+              handleAddToMyWatch={handleAddToMyWatch}
             
               // getLandingPoster={getLandingPoster}
             />} />
