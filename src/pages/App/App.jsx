@@ -56,11 +56,12 @@ export default function App() {
     console.log(search)
   }
 
-  async function handleAddToMyWatch(selectId, selectTitle, check) {
-    console.log("Add to my selects ", selectId, selectTitle)
-    const movie = await myWatchAPI.addToMyWatch(selectId, selectTitle)
+ 
+  async function handleAddToMyWatch(mwID, mwMediaType, mwTitle, mwName, MWHaveSeen) {
+    console.log("Add to myWatch ", mwID, mwMediaType, mwTitle, mwName, "HaveSeen: ", MWHaveSeen)
+    const myWatch = await myWatchAPI.addToMyWatch(mwID, mwMediaType, mwTitle, mwName, MWHaveSeen)
     // const myMovie = await usersAPI.addToMyMovies(movieId)
-    console.log(movie)
+    console.log(myWatch)
     // console.log("User Model My Movies?", myMovie)
     // getAlreadyWatchedMovies()
     // setSelectedMovie(selectedMovie)

@@ -3,14 +3,17 @@ const Schema = mongoose.Schema;
 
 const movieSchema = new Schema({
     title: {
-        type: String,
+        type: "String",
         // required: true
     },
     id: {
-        type: Number,
+        type: "Number",
         // required: true
     },
-    
+    haveSeen: {
+        type: "Boolean",
+        default: false
+    },
     
     },
 {
@@ -18,11 +21,11 @@ const movieSchema = new Schema({
     });
     
 
-movieSchema.statics.getMovies = function(movieId, movieTitle, check){
+movieSchema.statics.getMovies = function(movieId, movieTitle, haveSeen){
     // console.log("yep dirp"),
     return this.findOneAndUpdate(
         {id: movieId},
-        {id: movieId, title: movieTitle},
+        {id: movieId, title: movieTitle, haveSeen: haveSeen},
         {upsert: true, new:true},        
     )    
 }

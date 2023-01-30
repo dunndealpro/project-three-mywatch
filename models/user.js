@@ -20,9 +20,12 @@ const userSchema = new Schema({
         minLength: 3,
         required: true
       },
-      myMovies: [{type: Schema.Types.ObjectId, ref: 'movieId'}],
-      myShows: [{type: Schema.Types.ObjectId, ref: 'showId'}],
-      myActors: [{type: Schema.Types.ObjectId, ref: 'actorId'}],
+
+      myWatch:[{type: Schema.Types.ObjectId, ref: 'myWatchId'}],
+
+      // myMovies: [{type: Schema.Types.ObjectId, ref: 'movieId'}],
+      // myShows: [{type: Schema.Types.ObjectId, ref: 'showId'}],
+      // myActors: [{type: Schema.Types.ObjectId, ref: 'actorId'}],
     }, {
       timestamps: true,
 
