@@ -14,15 +14,13 @@ const myWatchSchema = new Schema({
     name:{
         type: "String"
     },
-    haveSeen:{
-        type: "Boolean"
-    }
+    viewers:[{type: Schema.Types.ObjectId, ref: 'User'}],
 })
 
 myWatchSchema.statics.getMyWatch = function(mwID, mwMediaType, mwTitle, mwName, mwHaveSeen){
     return this.findOneAndUpdate(
         {id: mwID},
-        {id: mwID, media_type: mwMediaType,  title: mwTitle, name: mwName, haveSeen: mwHaveSeen},
+        {id: mwID, media_type: mwMediaType,  title: mwTitle, name: mwName},
         {upsert: true, new:true},   
     )
 }
