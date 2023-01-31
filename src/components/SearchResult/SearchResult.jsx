@@ -17,13 +17,26 @@ export default function SearchResult(props) {
     let searchImg = `https://image.tmdb.org/t/p/original/${props.result.backdrop_path}`
     let mwID = props.result.id
     let title
-    let summary = props.result.overview
+    let summary
     let haveSeen
 
     let mwMediaType = props.result.media_type
     let mwTitle = props.result.title
     let mwName = props.result.name
+
+    if (props.result.backdrop_path){
+        searchImg = `https://image.tmdb.org/t/p/original/${props.result.backdrop_path}`
+    }else if(props.result.profile_path){
+        searchImg = `https://image.tmdb.org/t/p/original/${props.result.profile_path}`
+    }
     
+    if (props.result.overview){
+        summary = props.result.overview
+    } else if(props.result.known_for_department){
+        summary = props.result.known_for_department
+    }else{
+        summary = "no info available"
+    }
 
     if (props.result.title) {
         title = props.result.title
