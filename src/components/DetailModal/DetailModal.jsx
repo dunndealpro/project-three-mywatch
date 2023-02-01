@@ -33,12 +33,12 @@ export default function DetailModal(props) {
 
     let title = props.watchedDetails.name || props.watchedDetails.title
 
-    if(props.watchedDetails.name &&  props.watchedDetails.biography){
-        header2="Appears In"
-    }else if (props.watchedDetails.title ){
-        header2="Cast"
-    }else if(props.watchedDetails.name && props.watchedDetails.overview){
-        header2="Cast"
+    if (props.watchedDetails.name && props.watchedDetails.biography) {
+        header2 = "Appears In"
+    } else if (props.watchedDetails.title) {
+        header2 = "Cast"
+    } else if (props.watchedDetails.name && props.watchedDetails.overview) {
+        header2 = "Cast"
     }
 
     let mediaType
@@ -57,22 +57,22 @@ export default function DetailModal(props) {
         img = `https://image.tmdb.org/t/p/original${props.watchedDetails.profile_path}`
     }
 
-    const handleChange = (e) => {
-        haveSeen = e.target.checked
-        console.log(haveSeen)
-        if (haveSeen) {
-            console.log("true? ", haveSeen)
-            setDisplay("I have seen this",)
-            setSeen(true)
+    // const handleChange = (e) => {
+    //     haveSeen = e.target.checked
+    //     console.log(haveSeen)
+    //     if (haveSeen) {
+    //         console.log("true? ", haveSeen)
+    //         setDisplay("I have seen this",)
+    //         setSeen(true)
 
-        } else {
-            setDisplay("I have not see this")
-            setSeen(false)
-        }
-        console.log("State: ", display)
-        console.log("haveSeen? ", haveSeen)
-        return( haveSeen)
-    }
+    //     } else {
+    //         setDisplay("I have not see this")
+    //         setSeen(false)
+    //     }
+    //     console.log("State: ", display)
+    //     console.log("haveSeen? ", haveSeen)
+    //     return( haveSeen)
+    // }
 
     return (
         <Modal
@@ -96,31 +96,31 @@ export default function DetailModal(props) {
                     <Row>
                         <Col className="text-center">
                             <Image className="rounded" src={img} width={250} />
-                            <Form.Check 
-                            onChange={e => handleChange(e)}
-                            type="switch"
-                            id="custom-switch"                           
-                        />
-                       
+                            {/* <Form.Check
+                                onChange={e => handleChange(e)}
+                                type="switch"
+                                id="custom-switch"
+                            />
 
-                        <Form.Check.Label>{display}</Form.Check.Label>
+
+                            <Form.Check.Label>{display}</Form.Check.Label> */}
                         </Col>
                         <Col>
                             <Accordion defaultActiveKey="0">
                                 <Accordion.Item eventKey="0">
                                     <Accordion.Header>Summary</Accordion.Header>
-                                    <Accordion.Body className = "accordionCustom">
+                                    <Accordion.Body className="accordionCustom">
                                         <p>{summary}</p>
                                     </Accordion.Body>
                                 </Accordion.Item>
                                 <Accordion.Item eventKey="1">
                                     <Accordion.Header>{header2}</Accordion.Header>
-                                    <Accordion.Body className = "accordionCustom">
-                                       {/* {cast} */}
-                                       <PersonCard 
-                                       cast={props.watchedCredits.cast}
-                                       handleAddToMyWatch={props.handleAddToMyWatch}
-                                       />
+                                    <Accordion.Body className="accordionCustom">
+                                        {/* {cast} */}
+                                        <PersonCard
+                                            cast={props.watchedCredits.cast}
+                                            handleAddToMyWatch={props.handleAddToMyWatch}
+                                        />
                                     </Accordion.Body>
                                 </Accordion.Item>
                             </Accordion>
