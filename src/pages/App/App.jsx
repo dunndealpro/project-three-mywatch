@@ -2,7 +2,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useState, useEffect } from "react"
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useResolvedPath } from 'react-router-dom'
 
 import { getUser } from '../../utilities/users-service';
 
@@ -15,16 +15,21 @@ import NavBar from '../../components/NavBar/NavBar';
 
 import * as myWatchAPI from "../../utilities/myWatch-api"
 
+import { useBootstrapBreakpoints } from 'react-bootstrap/esm/ThemeProvider';
+
 
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [landingPoster, setLandingPoster] = useState([])
   const [search, setSearch] = useState('')
   const [searchResults, setSearchResults] = useState([])
+  const [watched, setWatched] = useState([])
+
+
   const API_KEY = "a72c1d466153d06b65f2879b369031d8"
 
 
-  
+
   const trendingUrl = `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
   const searchUrl = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${search}&page=1&include_adult=false`
 
@@ -36,19 +41,17 @@ export default function App() {
       setLandingPoster(response)
     } catch (error) {
       console.log("Error! ", error)
-    }     
+    }
   }
 
-  const getSearch = async (evt) => {    
-        evt.preventDefault();
-
+  const getSearch = async (evt) => {
+    evt.preventDefault();
     try {
       console.log("Search: ", search)
-      const response = await fetch(searchUrl).then(res => res.json());      
-       setSearchResults(response) ;
+      const response = await fetch(searchUrl).then(res => res.json());
+      setSearchResults(response);
       console.log(response);
       setSearch("")
-      
     } catch (error) {
       console.log("Error!!>!>!")
       console.error(error);
@@ -56,7 +59,15 @@ export default function App() {
     console.log(search)
   }
 
- 
+  async function getWatched(){
+    console.log("Get Watched")
+    let watchedtemp = await myWatchAPI.getWatched()
+    console.log(watchedtemp)
+    
+    setWatched(watchedtemp)
+
+  }
+
   async function handleAddToMyWatch(mwID, mwMediaType, mwTitle, mwName, MWHaveSeen) {
     console.log("Add to myWatch ", mwID, mwMediaType, mwTitle, mwName, "HaveSeen: ", MWHaveSeen)
     const myWatch = await myWatchAPI.addToMyWatch(mwID, mwMediaType, mwTitle, mwName, MWHaveSeen)
@@ -68,13 +79,15 @@ export default function App() {
     // setSelectedDisplay(selectedDisplay)
     // setSearch(search)
   }
-  
+
 
   useEffect(() => {
-    console.log("I fire once!")    
-    getLandingPoster()
     
-    }, [])
+    console.log("I fire once!")
+    getLandingPoster()
+    console.log(watched)
+
+  }, [])
 
   //   // getLandingPoster()
   // }, [])
@@ -94,11 +107,14 @@ export default function App() {
               getSearch={getSearch}
               searchResults={searchResults}
               handleAddToMyWatch={handleAddToMyWatch}
-            
-              // getLandingPoster={getLandingPoster}
+
+            // getLandingPoster={getLandingPoster}
             />} />
             <Route path="/search" element={<SearchPage />} />
-            <Route path="/mywatch" element={<MyWatchPage />} />
+            <Route path="/mywatch" element={<MyWatchPage 
+            getWatched = {getWatched}
+            watched = {watched}
+            />} />
           </Routes>
 
         </>

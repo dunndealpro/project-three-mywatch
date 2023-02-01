@@ -4,17 +4,36 @@ const MyWatch = require("../../models/myWatch");
 
 module.exports = {
   addToMyWatch,
+  getWatched
 };
+
+async function getWatched(req, res){
+    console.log("get watched: ", req.user._id)
+    let user = await User.findById(req.user._id).populate('watched').exec()
+
+    let getWatched = user.watched
+    console.log("Watched,  :", user.watched)
+    console.log(getWatched)
+
+    let getNotWatched = user.notWatched
+    console.log("NOT Watched,  :",user.notWatched)
+    console.log(getNotWatched)
+
+    res.json(getWatched)
+}
 
 async function addToMyWatch(req, res) {
   console.log("MY watch test!!! ");
-  const myWatch = await MyWatch.getMyWatch(parseInt(req.params.id));
+  const myWatch = await MyWatch.getMyWatch(parseInt(req.params.id), req.body.mwMediaType);
+  let myWatch3 = myWatch
+  console.log(myWatch3)
   console.log("huhuh   ", req.params.id);
   let user = await User.findById(req.user._id);
   let myWatchItem = await MyWatch.findOne(myWatch._id);
   console.log("Boolean: ", req.body.mwHaveSeen);
   console.log("MyWatchItem: ", myWatchItem);
 
+  if(req.body.mwMediaType == "movie" || req.body.mwMediaType == "tv"){
   if (req.body.mwHaveSeen) {
     console.log("userwatched: ", user.watched.includes(myWatchItem));
     if (!user.watched.includes(myWatchItem._id)) {
@@ -33,12 +52,18 @@ async function addToMyWatch(req, res) {
         user.watched.splice(idx, 1);
       }
     }
+  }}else if(req.body.mwMediaType == "person"){
+    if (!user.myActors.includes(myWatchItem._id)) {
+        user.myActors.push(myWatch._id);       
+      }
   }
 
   user.save();
+  myWatch.save();
   myWatchItem.save();
-  console.log("My Watch?  ", myWatchItem);
+  console.log("My Watch?  ", myWatch);
   console.log("User Info: ", user);
+//   console.log("User Info: ", user);
   res.json(myWatch);
 }
 

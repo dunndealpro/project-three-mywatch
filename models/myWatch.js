@@ -2,16 +2,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const myWatchSchema = new Schema({
-    tmdbid: {
-        type: "Number",
+    tmdBid: {
+        type: Number,
     },
     
+    mediaType: {
+        type: String,        
+    }
 })
 
-myWatchSchema.statics.getMyWatch = function(mwID){
+myWatchSchema.statics.getMyWatch = function(mwID, mwMediaType){
     return this.findOneAndUpdate(
-        {tmdbid: mwID},
-        {tmdbid: mwID},
+        {tmdBid: mwID},
+        {tmdBid: mwID, mediaType: mwMediaType},
         {upsert: true, new:true},   
     )
 }

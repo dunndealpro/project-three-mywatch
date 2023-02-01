@@ -21,7 +21,7 @@ const userSchema = new Schema(
       required: true,
     },
 
-    watched: [{ type: Schema.Types.ObjectId, ref: "watched" }],
+    watched: [{ type: Schema.Types.ObjectId, ref: "MyWatch" }],
 
     notWatched: [{ type: Schema.Types.ObjectId, ref: "notWatched" }],
 

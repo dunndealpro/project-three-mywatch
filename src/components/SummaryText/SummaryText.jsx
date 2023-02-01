@@ -8,7 +8,7 @@ export default function SummaryText(props) {
     content = props.trendingOverview
   } else if (props.searchSummary) {
     content = props.searchSummary
-  }
+  } 
 
   let limit = 50
 

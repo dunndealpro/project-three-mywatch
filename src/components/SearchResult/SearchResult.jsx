@@ -80,12 +80,18 @@ export default function SearchResult(props) {
                 <Card.Body>
                     {/* <Form> */}
                         <Button className="btn-sm" onClick={() => props.handleAddToMyWatch(mwID, mwMediaType, mwTitle, mwName,mwHaveSeen)}>Add to MyWatch </Button>
+                        { mwMediaType !== "person" &&
+                       <>
                         <Form.Check
                             onChange={e => handleChange(e)}
                             type="switch"
                             id="custom-switch"                           
                         />
+                       
+
                         <Form.Check.Label>{display}</Form.Check.Label>
+                       </>
+}
 
                     {/* </Form> */}
                     {/* <Card.Link href="#">Card Link</Card.Link>

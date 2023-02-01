@@ -7,12 +7,12 @@ const BASE_URL = '/api/mywatch';
 export function addToMyWatch(mwID, mwMediaType, mwTitle, mwName, mwHaveSeen){
     console.log('add to mywatch step 2 ', mwID, mwMediaType, mwTitle, mwName, mwHaveSeen)
     
-    return sendRequest(`${BASE_URL}/mywatch/${mwID}`, 'POST', {id: mwID, mwMediaType:  mwMediaType, mwTitle: mwTitle, mwName: mwName, mwHaveSeen: mwHaveSeen} )
+    return sendRequest(`${BASE_URL}/mywatch/${mwID}`, 'POST', {id: mwID, mwMediaType: mwMediaType, mwTitle: mwTitle, mwName: mwName, mwHaveSeen: mwHaveSeen} )
 }
 
-export function getMyWatchItems(){
+export function getWatched(){
     console.log("My Watch step 2")
-    return sendRequest(`${BASE_URL}/mywatch/`, 'GET',  )
+    return sendRequest(`${BASE_URL}/mywatch`, 'GET',  )
 }
 
 // export function getNextWatchMovies(){
