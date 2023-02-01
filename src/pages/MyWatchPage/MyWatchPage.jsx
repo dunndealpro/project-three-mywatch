@@ -47,6 +47,8 @@ export default function MyWatchPage(props) {
                                     key={w._id}
                                     tmdBid={w.tmdBid}
                                     mediaType={w.mediaType}
+                                    handleAddToMyWatch={props.handleAddToMyWatch}
+                                    seenBoolean={true}
                                 />
                             ))}
                         </Row>
@@ -62,6 +64,8 @@ export default function MyWatchPage(props) {
                                     key={w._id}
                                     tmdBid={w.tmdBid}
                                     mediaType={w.mediaType}
+                                    handleAddToMyWatch={props.handleAddToMyWatch}
+                                    seenBoolean={false}
                                 />
                             ))}
 
@@ -78,6 +82,7 @@ export default function MyWatchPage(props) {
                                     key={w._id}
                                     tmdBid={w.tmdBid}
                                     mediaType={w.mediaType}
+                                    handleAddToMyWatch={props.handleAddToMyWatch}
                                 />
                             ))}
 

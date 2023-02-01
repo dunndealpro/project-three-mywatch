@@ -19,7 +19,7 @@ export default function NavBar({ user, setUser }) {
 
       
     return (
-        <Navbar collapseOnSelect expand="lg" className="fs-5 sticky-top bg-primary">
+        <Navbar collapseOnSelect expand="lg" className="fs-5 sticky-top bg-light">
             <Navbar.Brand className="fs-5 ms-2" href="/">Home</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
