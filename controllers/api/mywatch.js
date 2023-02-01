@@ -4,20 +4,31 @@ const MyWatch = require("../../models/myWatch");
 
 module.exports = {
   addToMyWatch,
-  getWatched
+  getWatched,
+//   getNotWatched
 };
+
+// async function getNotWatched(req, res){
+//     console.log("get NOT watched: ", req.user._id)
+//     let user = await User.findById(req.user._id).populate('notWatched').exec()
+//     let getNotWatched = user.notWatched
+//     console.log("Not Watched,  :", user.notWatched)
+//     console.log(getWatched)   
+//     res.json(getNotWatched)
+// }
 
 async function getWatched(req, res){
     console.log("get watched: ", req.user._id)
-    let user = await User.findById(req.user._id).populate('watched').exec()
+    let user = await User.findById(req.user._id).populate('watched').populate( 'notWatched').populate( 'myActors').exec()
+    console.log("USER: ", user)
 
-    let getWatched = user.watched
-    console.log("Watched,  :", user.watched)
-    console.log(getWatched)
-
+    let getWatched = user
     let getNotWatched = user.notWatched
-    console.log("NOT Watched,  :",user.notWatched)
-    console.log(getNotWatched)
+    console.log("Watched,  :", user, "Not Watched,: ", user.notWatched)
+
+    // let getNotWatched = user.notWatched
+    // console.log("NOT Watched,  :",user.notWatched)
+    // console.log(getNotWatched)
 
     res.json(getWatched)
 }

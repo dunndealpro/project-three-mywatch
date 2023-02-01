@@ -24,6 +24,8 @@ export default function App() {
   const [search, setSearch] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [watched, setWatched] = useState([])
+  const [notWatched, setNotWatched] = useState([])
+  const [myActors, setMyActors] = useState([])
 
 
   const API_KEY = "a72c1d466153d06b65f2879b369031d8"
@@ -62,9 +64,12 @@ export default function App() {
   async function getWatched(){
     console.log("Get Watched")
     let watchedtemp = await myWatchAPI.getWatched()
-    console.log(watchedtemp)
-    
-    setWatched(watchedtemp)
+    console.log(watchedtemp.watched)
+    console.log(watchedtemp.notWatched)
+    console.log(watchedtemp.myActors)
+    setNotWatched(watchedtemp.notWatched)
+    setWatched(watchedtemp.watched)
+    setMyActors(watchedtemp.myActors)
 
   }
 
@@ -114,6 +119,10 @@ export default function App() {
             <Route path="/mywatch" element={<MyWatchPage 
             getWatched = {getWatched}
             watched = {watched}
+            notWatched = {notWatched}
+            myActors = {myActors}
+            
+            
             />} />
           </Routes>
 

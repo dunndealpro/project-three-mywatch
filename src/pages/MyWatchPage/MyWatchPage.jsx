@@ -10,14 +10,17 @@ import Row from 'react-bootstrap/Row'
 
 export default function MyWatchPage(props) {
 
+    let userTest = []
 
     useEffect(() => {
         console.log("Get Watch UseEffect")
         props.getWatched()
     }, [])
 
+     userTest = props.watched.watched
+    console.log("userTEst  ", userTest)
 
-
+// console.log(props.watched.watched)
     //     const  [myWatchItems, setMyWatchItems] = useState([])
 
     // async function getMyWatchItems(){
@@ -29,7 +32,7 @@ export default function MyWatchPage(props) {
     return (
         <div className="text-center">
             <h1>MyWatch Page</h1>
-            <Container className="bg-dark rounded p-3 text-center">
+            <Container className="bg-light rounded p-3 text-center">
                 <Tabs variant="pills"
                     defaultActiveKey="watchedItems"
                     id="fill-tab-example"
@@ -46,19 +49,42 @@ export default function MyWatchPage(props) {
                                     mediaType={w.mediaType}
                                 />
                             ))}
+                        </Row>
+                        </Container>
+                    </Tab>
+
+                    <Tab variant="pills " eventKey="nonWatchedItems" title="Need to Watch">
+                        
+                        <Container className="text-center" >
+                        <Row className="justify-content-center" >
+                            {props.notWatched.map((w) => (
+                                <WatchedItem 
+                                    key={w._id}
+                                    tmdBid={w.tmdBid}
+                                    mediaType={w.mediaType}
+                                />
+                            ))}
 
                         </Row>
 
                         </Container>
                     </Tab>
-
-                    <Tab variant="pills " eventKey="nonWatchedItems" title="Need to Watch">
-                        <h1 className="text-light">Hell
-                        </h1>
-                    </Tab>
                     <Tab variant="pills " eventKey="myActors" title="myActors">
-                        <h1 className="text-light">Hello
-                        </h1>
+                        
+                        <Container className="text-center" >
+                        <Row className="justify-content-center" >
+                            {props.myActors.map((w) => (
+                                <WatchedItem 
+                                    key={w._id}
+                                    tmdBid={w.tmdBid}
+                                    mediaType={w.mediaType}
+                                />
+                            ))}
+
+                        </Row>
+
+                        </Container>
+                        
                     </Tab>
 
 

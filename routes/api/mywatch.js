@@ -6,6 +6,7 @@ const myWatchCtrl = require('../../controllers/api/mywatch')
 // router.get('/movies/', moviesCtrl.getNextWatchMovies)
 router.post('/mywatch/:id', myWatchCtrl.addToMyWatch)
 router.get('/mywatch', myWatchCtrl.getWatched)
+
 // router.delete('/movies/', moviesCtrl.deleteFromMyMovies)
 
 module.exports = router;
