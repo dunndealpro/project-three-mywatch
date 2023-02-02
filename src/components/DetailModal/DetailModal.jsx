@@ -1,5 +1,3 @@
-
-
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
@@ -10,13 +8,13 @@ import Accordion from 'react-bootstrap/Accordion';
 import PersonCard from '../PersonCard/PersonCard';
 import Form from 'react-bootstrap/Form';
 import { useEffect, useState } from 'react';
-
+import * as myWatchAPI from "../../utilities/myWatch-api"
 
 import "./DetailModal.css"
 
-
 export default function DetailModal(props) {
 
+    const [comment, setComment]= useState("")  
     const [display, setDisplay] = useState("I have not seen this")
     const [seen, setSeen] = useState(props.seenBoolean)
 
@@ -27,7 +25,7 @@ export default function DetailModal(props) {
     let release = props.watchedDetails.release_date || props.watchedDetails.last_air_date
     // let genre = props.watchedDetails.genres[0].name
     let cast = props.watchedCredits.cast
-    console.log(cast)
+    // console.log(cast)
 
     let summary = props.watchedDetails.overview || props.watchedDetails.biography
 
@@ -49,7 +47,8 @@ export default function DetailModal(props) {
     } else if (props.mediaType === "person") {
         mediaType = "Person"
     }
-    console.log("Modal: ", mediaType)
+    
+    console.log("Modal: ", props.watchedDetails.id)
 
     if (props.watchedDetails.backdrop_path) {
         img = `https://image.tmdb.org/t/p/original${props.watchedDetails.poster_path}`
@@ -57,9 +56,24 @@ export default function DetailModal(props) {
         img = `https://image.tmdb.org/t/p/original${props.watchedDetails.profile_path}`
     }
 
+    async function handleAddComment(e){
+        e.preventDefault()
+        let tmdBid=props.watchedDetails._id
+        // let userComment = await myWatchAPI.addComment(tmdBid, comment)
+        // console.log("Comment: ", props.watchedDetails.id)
+        // setComment("")
+        // console.log(userComment)
+        
+    }
+
+    function handleChange  (evt)  {
+        setComment(
+            evt.target.value,
+        );
+    };
     // const handleChange = (e) => {
-    //     haveSeen = e.target.checked
-    //     console.log(haveSeen)
+    //     comment = e.target.checked
+    //     console.log(commet)
     //     if (haveSeen) {
     //         console.log("true? ", haveSeen)
     //         setDisplay("I have seen this",)
@@ -104,6 +118,15 @@ export default function DetailModal(props) {
 
 
                             <Form.Check.Label>{display}</Form.Check.Label> */}
+
+                            <Form  >
+                                <Form.Group className="mb-3" controlId="userComment">                                    
+                                    <Form.Control className="m-3"as="textarea" rows={3} type="text" value={comment} placeholder="Enter Comment" onChange={handleChange}/>                                    
+                                </Form.Group>                               
+                                <Button onClick={e => handleAddComment(e)} variant="primary" >
+                                    Submit
+                                </Button>
+                            </Form>
                         </Col>
                         <Col>
                             <Accordion defaultActiveKey="0">
@@ -118,12 +141,20 @@ export default function DetailModal(props) {
                                     <Accordion.Body className="accordionCustom">
                                         {/* {cast} */}
                                         <PersonCard
+                                       
                                             cast={props.watchedCredits.cast}
                                             handleAddToMyWatch={props.handleAddToMyWatch}
                                         />
                                     </Accordion.Body>
                                 </Accordion.Item>
+                                <Accordion.Item eventKey="2">
+                                    <Accordion.Header>Comments</Accordion.Header>
+                                    <Accordion.Body className="accordionCustom">
+                                        <p>Comments will go here</p>
+                                    </Accordion.Body>
+                                </Accordion.Item>
                             </Accordion>
+                            
                         </Col>
                     </Row>
                 </Container>

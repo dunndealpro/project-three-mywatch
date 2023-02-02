@@ -63,8 +63,8 @@ export default function WatchedItem(props) {
     }, []);
 
     // console.log(watchedDetails.backdrop_path)
-    console.log(watchedDetails.backdrop_path)
-    console.log(watchedDetails.title)
+    console.log(watchedDetails.backdrop_path || watchedDetails.profile_path)
+    console.log(watchedDetails.title || watchedDetails.name)
 
     return (
         <>

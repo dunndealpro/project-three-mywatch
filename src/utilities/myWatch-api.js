@@ -12,8 +12,13 @@ export function addToMyWatch(mwID, mwMediaType, mwTitle, mwName, mwHaveSeen){
 
 export function getWatched(){
     console.log("My Watch step 2")
-    return sendRequest(`${BASE_URL}/mywatch`, 'GET',  )
+    return sendRequest(`${BASE_URL}/mywatch/`, 'GET',  )
 }
+
+// export function addComment(){
+//     console.log("Add Comment Step 2")
+//     return sendRequest(`${BASE_URL}/mywatch/${mwID}`, 'POST', {} )
+// }
 
 // export function getNextWatchMovies(){
 //     console.log("Next Watch step 2")

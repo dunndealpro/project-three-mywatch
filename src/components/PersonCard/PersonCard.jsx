@@ -18,7 +18,7 @@ export default function PersonCard(props){
         <>
         <Row >
         {[props.cast.map((cast)=>(
-            <Card className='m-1 bg-light' style={{ width: '10rem' }}>
+            <Card  key = {cast.id} className='m-1 bg-light' style={{ width: '10rem' }}>
                 
             <Card.Img  className='m-2' src={`https://image.tmdb.org/t/p/original/${img = cast.profile_path || cast.backdrop_path}`} variant="top"/>
             

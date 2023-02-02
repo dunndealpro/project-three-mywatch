@@ -1,21 +1,18 @@
 const Movie = require("../../models/movie");
 const User = require("../../models/user");
 const MyWatch = require("../../models/myWatch");
+// const { addComment } = require("../../src/utilities/myWatch-api");
 
 module.exports = {
   addToMyWatch,
   getWatched,
-//   getNotWatched
+  addComment,
 };
 
-// async function getNotWatched(req, res){
-//     console.log("get NOT watched: ", req.user._id)
-//     let user = await User.findById(req.user._id).populate('notWatched').exec()
-//     let getNotWatched = user.notWatched
-//     console.log("Not Watched,  :", user.notWatched)
-//     console.log(getWatched)   
-//     res.json(getNotWatched)
-// }
+async function addComment(req, res){
+    console.log("Add comment step 3:  ")
+    // let comment = await 
+}
 
 async function getWatched(req, res){
     console.log("get watched: ", req.user._id)
@@ -78,24 +75,4 @@ async function addToMyWatch(req, res) {
   res.json(myWatch);
 }
 
-async function addToMyMovies(req, res) {
-  console.log("Movies test!!! ");
-  const movie = await Movie.getMovies(
-    parseInt(req.params.id),
-    req.body.title,
-    req.body.haveSeen
-  );
-  console.log(movie);
-  res.json(movie);
-}
 
-async function addToMyShows(req, res) {
-  console.log("Movies test!!! ");
-  const movie = await Show.getMovies(
-    parseInt(req.params.id),
-    req.body.title,
-    req.body.haveSeen
-  );
-  console.log(movie);
-  res.json(movie);
-}
