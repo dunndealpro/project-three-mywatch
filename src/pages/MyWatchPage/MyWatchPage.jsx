@@ -49,6 +49,7 @@ export default function MyWatchPage(props) {
                                     mediaType={w.mediaType}
                                     handleAddToMyWatch={props.handleAddToMyWatch}
                                     seenBoolean={true}
+                                    user={props.user}
                                 />
                             ))}
                         </Row>
@@ -66,6 +67,7 @@ export default function MyWatchPage(props) {
                                     mediaType={w.mediaType}
                                     handleAddToMyWatch={props.handleAddToMyWatch}
                                     seenBoolean={false}
+                                    user={props.user}
                                 />
                             ))}
 
@@ -83,6 +85,7 @@ export default function MyWatchPage(props) {
                                     tmdBid={w.tmdBid}
                                     mediaType={w.mediaType}
                                     handleAddToMyWatch={props.handleAddToMyWatch}
+                                    user={props.user}
                                 />
                             ))}
 

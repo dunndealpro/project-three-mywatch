@@ -80,6 +80,7 @@ export default function WatchedItem(props) {
                     watchedCredits = {watchedCredits}
                     handleAddToMyWatch={props.handleAddToMyWatch}
                     seenBoolean={props.seenBoolean}
+                    user={props.user}
                 />
             </Card>
         </>

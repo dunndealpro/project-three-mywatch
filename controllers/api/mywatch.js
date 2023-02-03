@@ -11,7 +11,16 @@ module.exports = {
 
 async function addComment(req, res){
     console.log("Add comment step 3:  ")
-    // let comment = await 
+    user = await User.findById(req.user._id)
+    console.log(req.user)
+    console.log(req.body)
+    console.log(req.params.id)
+    myWatchForComment = await MyWatch.findOne({'tmdBid': req.params.id})
+    console.log(myWatchForComment)
+    myWatchForComment.comments.push(req.body)
+    myWatchForComment.save()
+    console.log("post save: ", myWatchForComment)
+    res.json(myWatchForComment)
 }
 
 async function getWatched(req, res){

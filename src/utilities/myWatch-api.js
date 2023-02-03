@@ -15,10 +15,12 @@ export function getWatched(){
     return sendRequest(`${BASE_URL}/mywatch/`, 'GET',  )
 }
 
-// export function addComment(){
-//     console.log("Add Comment Step 2")
-//     return sendRequest(`${BASE_URL}/mywatch/${mwID}`, 'POST', {} )
-// }
+export function addComment(userInfo, tmdBid, comment){
+    console.log("Add Comment Step 2")
+    console.log(userInfo)
+    console.log( comment)
+    return sendRequest(`${BASE_URL}/${tmdBid}/comment`, 'POST', { author: userInfo, content: comment })
+}
 
 // export function getNextWatchMovies(){
 //     console.log("Next Watch step 2")

@@ -122,6 +122,7 @@ export default function App() {
             notWatched = {notWatched}
             myActors = {myActors}
             handleAddToMyWatch={handleAddToMyWatch}
+            user={user}
             
             
             />} />

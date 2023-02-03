@@ -58,10 +58,15 @@ export default function DetailModal(props) {
 
     async function handleAddComment(e){
         e.preventDefault()
-        let tmdBid=props.watchedDetails._id
-        // let userComment = await myWatchAPI.addComment(tmdBid, comment)
-        // console.log("Comment: ", props.watchedDetails.id)
-        // setComment("")
+        let tmdBid=props.watchedDetails.id
+        console.log("Add Comment step 1")
+        console.log(props.user)
+        let userInfo = props.user._id
+        console.log(tmdBid)
+        let userComment = await myWatchAPI.addComment(userInfo, tmdBid, comment )
+        console.log("Comment: ", props.watchedDetails.id)
+        console.log(e.comment)
+        setComment("")
         // console.log(userComment)
         
     }
