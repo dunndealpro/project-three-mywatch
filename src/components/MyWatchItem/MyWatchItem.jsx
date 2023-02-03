@@ -65,6 +65,7 @@ export default function WatchedItem(props) {
     // console.log(watchedDetails.backdrop_path)
     console.log(watchedDetails.backdrop_path || watchedDetails.profile_path)
     console.log(watchedDetails.title || watchedDetails.name)
+    console.log(props.comments)
 
     return (
         <>
@@ -81,6 +82,7 @@ export default function WatchedItem(props) {
                     handleAddToMyWatch={props.handleAddToMyWatch}
                     seenBoolean={props.seenBoolean}
                     user={props.user}
+                    comments={props.comments}
                 />
             </Card>
         </>

@@ -11,10 +11,12 @@ import { useEffect, useState } from 'react';
 import * as myWatchAPI from "../../utilities/myWatch-api"
 
 import "./DetailModal.css"
+import CommentCard from '../CommentCard/CommentCard';
 
 export default function DetailModal(props) {
 
     const [comment, setComment]= useState("")  
+    
     const [display, setDisplay] = useState("I have not seen this")
     const [seen, setSeen] = useState(props.seenBoolean)
 
@@ -67,9 +69,10 @@ export default function DetailModal(props) {
         console.log("Comment: ", props.watchedDetails.id)
         console.log(e.comment)
         setComment("")
-        // console.log(userComment)
-        
+        // console.log(userComment)        
     }
+
+  
 
     function handleChange  (evt)  {
         setComment(
@@ -155,7 +158,10 @@ export default function DetailModal(props) {
                                 <Accordion.Item eventKey="2">
                                     <Accordion.Header>Comments</Accordion.Header>
                                     <Accordion.Body className="accordionCustom">
-                                        <p>Comments will go here</p>
+                                        
+                                        <CommentCard
+                                        comments = {props.comments}
+                                        />
                                     </Accordion.Body>
                                 </Accordion.Item>
                             </Accordion>

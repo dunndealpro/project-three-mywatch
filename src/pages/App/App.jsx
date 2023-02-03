@@ -26,6 +26,7 @@ export default function App() {
   const [watched, setWatched] = useState([])
   const [notWatched, setNotWatched] = useState([])
   const [myActors, setMyActors] = useState([])
+ 
 
 
   const API_KEY = "a72c1d466153d06b65f2879b369031d8"
@@ -70,6 +71,7 @@ export default function App() {
     setNotWatched(watchedtemp.notWatched)
     setWatched(watchedtemp.watched)
     setMyActors(watchedtemp.myActors)
+  
 
   }
 

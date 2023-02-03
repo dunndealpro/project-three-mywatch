@@ -50,6 +50,7 @@ export default function MyWatchPage(props) {
                                     handleAddToMyWatch={props.handleAddToMyWatch}
                                     seenBoolean={true}
                                     user={props.user}
+                                    comments = {w.comments}
                                 />
                             ))}
                         </Row>
@@ -68,6 +69,7 @@ export default function MyWatchPage(props) {
                                     handleAddToMyWatch={props.handleAddToMyWatch}
                                     seenBoolean={false}
                                     user={props.user}
+                                    comments = {w.comments}
                                 />
                             ))}
 
@@ -86,6 +88,7 @@ export default function MyWatchPage(props) {
                                     mediaType={w.mediaType}
                                     handleAddToMyWatch={props.handleAddToMyWatch}
                                     user={props.user}
+                                    comments = {w.comments}
                                 />
                             ))}
 
