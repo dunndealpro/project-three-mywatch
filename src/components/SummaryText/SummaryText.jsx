@@ -11,40 +11,40 @@ export default function SummaryText(props) {
     content = props.searchSummary
   } 
 
-  let haveSeen
-  let mwMediaType = props.posterUrl.media_type
-  console.log(mwMediaType)
+  // let haveSeen
+  // let mwMediaType = props.posterUrl.media_type
+  // console.log(mwMediaType)
 
   let limit = 50
-  let mwID = props.posterUrl.id
+  // let mwID = props.posterUrl.id
 
   const [showAll, setShowAll] = useState(false);
-  const [display, setDisplay] = useState("I have not seen this")
-  const [seen, setSeen] = useState()
+  // const [display, setDisplay] = useState("I have not seen this")
+  // const [seen, setSeen] = useState()
 
   const showMore = () => setShowAll(true);
   const showLess = () => setShowAll(false);
 
-  let mwHaveSeen =seen
-let mwTitle
-let mwName
+//   let mwHaveSeen =seen
+// let mwTitle
+// let mwName
 
-  const handleChange = (e) => {
-    haveSeen = e.target.checked
-    console.log(haveSeen)
-    if (haveSeen) {
-        console.log("true? ", haveSeen)
-        setDisplay("I have seen this",)
-        setSeen(true)
+//   const handleChange = (e) => {
+//     haveSeen = e.target.checked
+//     console.log(haveSeen)
+//     if (haveSeen) {
+//         console.log("true? ", haveSeen)
+//         setDisplay("I have seen this",)
+//         setSeen(true)
 
-    } else {
-        setDisplay("I have not see this")
-        setSeen(false)
-    }
-    console.log("State: ", display)
-    console.log("haveSeen? ", haveSeen)
-    return( haveSeen)
-}
+//     } else {
+//         setDisplay("I have not see this")
+//         setSeen(false)
+//     }
+//     console.log("State: ", display)
+//     console.log("haveSeen? ", haveSeen)
+//     return( haveSeen)
+// }
 
   if (content.length <= limit) {
     // there is nothing more to show
@@ -55,7 +55,7 @@ let mwName
     return <div>
       {content}
       <br />
-      <Form.Check
+      {/* <Form.Check
                             onChange={e => handleChange(e)}
                             type="switch"
                             id="custom-switch"                           
@@ -63,7 +63,7 @@ let mwName
                        
 
                         <Form.Check.Label>{display}</Form.Check.Label>
-      <Button variant="info" size="sm" onClick={() => props.handleAddToMyWatch(mwID, mwMediaType, mwTitle, mwName,mwHaveSeen)}>Add to My Watch</Button>
+      <Button variant="info" size="sm" onClick={() => props.handleAddToMyWatch(mwID, mwMediaType, mwTitle, mwName,mwHaveSeen)}>Add to My Watch</Button> */}
       <Button variant="info" size="sm" onClick={showLess}>Read less</Button>
     </div>
   }
