@@ -1,32 +1,79 @@
 const Movie = require("../../models/movie");
 const User = require("../../models/user");
 const MyWatch = require("../../models/myWatch");
+const Comment = require("../../models/comment");
 // const { addComment } = require("../../src/utilities/myWatch-api");
 
 module.exports = {
   addToMyWatch,
   getWatched,
   addComment,
+  getComments
 };
+
+async function getComments(req,res){
+    console.log("Getting comments?!?")
+    let commentstemp = await MyWatch.findOne({"tmdBid": req.params.id}).populate({path: "comments", populate: {path: "author", model: 'User'}}).exec()
+   console.log(commentstemp)   
+    res.json(commentstemp)
+    
+}
 
 async function addComment(req, res){
     console.log("Add comment step 3:  ")
-    user = await User.findById(req.user._id)
-    console.log(req.user)
-    console.log(req.body)
-    console.log(req.params.id)
-    myWatchForComment = await MyWatch.findOne({'tmdBid': req.params.id})
-    console.log(myWatchForComment)
-    myWatchForComment.comments.push(req.body)
+    console.log(req.params._id)
+    const comment = new Comment(req.body)
+    comment.save()
+    
+    const myWatchForComment = await MyWatch.findOne({'tmdBid': req.params.id})
+    console.log("Comment: ", comment)
+    console.log(myWatchForComment )
+    myWatchForComment.comments.push(comment._id)
     myWatchForComment.save()
-    console.log("post save: ", myWatchForComment)
-    res.json(myWatchForComment)
+    console.log("&*&*&*", myWatchForComment )
+
+
+    // user = await User.findById(req.user._id)
+    // console.log(req.user)
+    // console.log(req.body)
+    // console.log(req.params.id)
+    // myWatchForComment = await MyWatch.findOne({'tmdBid': req.params.id})
+    // console.log(myWatchForComment)
+    // myWatchForComment.comments.push(req.body)
+    // myWatchForComment.save()
+    // console.log("post save: ", myWatchForComment)
+    res.json(comment)
 }
 
 async function getWatched(req, res){
     console.log("get watched: ", req.user._id)
-    let user = await User.findById(req.user._id).populate('watched').populate( 'notWatched').populate( 'myActors').exec()
-    console.log("USER: ", user)
+    // let user = await User.findById(req.user._id).populate('watched').populate( 'notWatched').populate( 'myActors').exec()
+    let user = await User.findById(req.user._id)
+    .populate({
+      path: "watched",
+      populate: {
+        path: "comments",
+        model: "Comment",
+        populate: { path: "author", model: "User" },
+      },
+    })
+    .populate({
+      path: "notWatched",
+      populate: {
+        path: "comments",
+        model: "Comment",
+        populate: { path: "author", model: "User" },
+      },
+    })
+    .populate({
+      path: "myActors",
+      populate: {
+        path: "comments",
+        model: "Comment",
+        populate: { path: "author", model: "User" },
+      },
+    })
+    .exec();
 
     let getWatched = user
     let getNotWatched = user.notWatched

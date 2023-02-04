@@ -10,41 +10,44 @@ import { useEffect, useState } from 'react';
 import { propTypes } from 'react-bootstrap/esm/Image';
 
 export default function CommentCard(props) {
+    console.log(props.comment.content)
 
+    const date = new Date()
+    // let commentDateTemp = `${commentDate.toLocaleString()}`
 
-const date = new Date()
-// let commentDateTemp = `${commentDate.toLocaleString()}`
+    let commentDate = new Date(props.comment.createdAt).toLocaleString()
+    
+    console.log(commentDate)
 
-let commentDate
-
-let commentAuthor
-// console.log(commentDateTemp)
-// props.comments.map((comment) => (
-//  commentDate = comment.createAt.toLocaleString  
-// ))
+    let commentAuthor
+    // console.log(commentDateTemp)
+    // props.comments.map((comment) => (
+    //  commentDate = comment.createAt.toLocaleString  
+    // ))
 
 
     return (
         <>
             <Container>
-                {props.comments.map((comment) => (
-                    <div>
-                        <Card>
-                            <Card.Body>
+
+                <div>
+                    <Card>
+                        <Card.Body>
+
+                            <Card.Text className='fs-5'>
+                                {props.comment.content}
+                            </Card.Text>
+                            <Card.Text>
+                                {props.comment.author.name} - {commentDate}
+                            </Card.Text>
+                            <Card.Text className='card-subtitle text-muted'>
+                                {/* {props.comment.createdAt.toLocaleString() } */}
                                 
-                                <Card.Text className='fs-5'>
-                                    {comment.content}
-                                </Card.Text>
-                                <Card.Text>
-                                    {commentAuthor = comment.author}
-                                </Card.Text>
-                                <Card.Text className='card-subtitle text-muted'>
-                                    {commentDate = new Date (comment.createdAt).toLocaleString()}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                ))}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>
+
             </Container>
         </>
     )

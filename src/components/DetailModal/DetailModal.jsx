@@ -15,8 +15,8 @@ import CommentCard from '../CommentCard/CommentCard';
 
 export default function DetailModal(props) {
 
-    const [comment, setComment]= useState("")  
-    
+    const [comment, setComment] = useState("")
+
     const [display, setDisplay] = useState("I have not seen this")
     const [seen, setSeen] = useState(props.seenBoolean)
 
@@ -49,7 +49,7 @@ export default function DetailModal(props) {
     } else if (props.mediaType === "person") {
         mediaType = "Person"
     }
-    
+
     console.log("Modal: ", props.watchedDetails.id)
 
     if (props.watchedDetails.backdrop_path) {
@@ -58,23 +58,33 @@ export default function DetailModal(props) {
         img = `https://image.tmdb.org/t/p/original${props.watchedDetails.profile_path}`
     }
 
-    async function handleAddComment(e){
+    async function handleAddComment(e) {
         e.preventDefault()
-        let tmdBid=props.watchedDetails.id
+        let tmdBid = props.watchedDetails.id
         console.log("Add Comment step 1")
         console.log(props.user)
         let userInfo = props.user._id
         console.log(tmdBid)
-        let userComment = await myWatchAPI.addComment(userInfo, tmdBid, comment )
+        let userComment = await myWatchAPI.addComment(userInfo, tmdBid, comment)
         console.log("Comment: ", props.watchedDetails.id)
         console.log(e.comment)
+
         setComment("")
         // console.log(userComment)        
     }
 
-  
+    let myWatchComments = []
 
-    function handleChange  (evt)  {
+    //     async function getComments() {
+    //         let tmdBid = props.watchedDetails.id
+    // console.log("Getti g comments?")
+    //         myWatchComments = await myWatchAPI.getComments(tmdBid)
+    //         console.log("Retrieved Comments: ", myWatchComments)
+    //     }
+
+    // getComments()
+
+    function handleChange(evt) {
         setComment(
             evt.target.value,
         );
@@ -95,6 +105,8 @@ export default function DetailModal(props) {
     //     console.log("haveSeen? ", haveSeen)
     //     return( haveSeen)
     // }
+
+    console.log(props.comments)
 
     return (
         <Modal
@@ -128,9 +140,9 @@ export default function DetailModal(props) {
                             <Form.Check.Label>{display}</Form.Check.Label> */}
 
                             <Form  >
-                                <Form.Group className="mb-3" controlId="userComment">                                    
-                                    <Form.Control className="m-3"as="textarea" rows={3} type="text" value={comment} placeholder="Enter Comment" onChange={handleChange}/>                                    
-                                </Form.Group>                               
+                                <Form.Group className="mb-3" controlId="userComment">
+                                    <Form.Control className="m-3" as="textarea" rows={3} type="text" value={comment} placeholder="Enter Comment" onChange={handleChange} />
+                                </Form.Group>
                                 <Button onClick={e => handleAddComment(e)} variant="primary" >
                                     Submit
                                 </Button>
@@ -149,7 +161,7 @@ export default function DetailModal(props) {
                                     <Accordion.Body className="accordionCustom">
                                         {/* {cast} */}
                                         <PersonCard
-                                       
+                                            
                                             cast={props.watchedCredits.cast}
                                             handleAddToMyWatch={props.handleAddToMyWatch}
                                         />
@@ -158,14 +170,18 @@ export default function DetailModal(props) {
                                 <Accordion.Item eventKey="2">
                                     <Accordion.Header>Comments</Accordion.Header>
                                     <Accordion.Body className="accordionCustom">
-                                        
-                                        <CommentCard
-                                        comments = {props.comments}
-                                        />
+                                        {props.comments && props.comments.map((comment) => (
+                                            <CommentCard
+                                            key={comment._id}
+                                                comment={comment}
+                                            />
+
+                                        ))}
+
                                     </Accordion.Body>
                                 </Accordion.Item>
                             </Accordion>
-                            
+
                         </Col>
                     </Row>
                 </Container>

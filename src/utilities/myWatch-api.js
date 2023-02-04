@@ -22,6 +22,12 @@ export function addComment(userInfo, tmdBid, comment){
     return sendRequest(`${BASE_URL}/${tmdBid}/comment`, 'POST', { author: userInfo, content: comment })
 }
 
+export function getComments(tmdBid){
+    console.log("still getting comments")
+    return sendRequest(`${BASE_URL}/${tmdBid}/comment`, 'GET')
+
+}
+
 // export function getNextWatchMovies(){
 //     console.log("Next Watch step 2")
 //     return sendRequest(`${BASE_URL}/movies/`, 'GET',  )

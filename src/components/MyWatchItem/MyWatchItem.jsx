@@ -8,12 +8,15 @@ import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react';
 import DetailModal from '../DetailModal/DetailModal';
+import * as myWatchAPI from "../../utilities/myWatch-api"
+
 
 export default function WatchedItem(props) {
 
     const [watchedDetails, setWatchedDetails] = useState([])
     const [watchedCredits, setWatchedCredits] = useState([])
     const [modalShow, setModalShow] = useState(false);
+    // const [displayComments, setDisplayComments] = useState([])
 
     let itemImg
     let title = watchedDetails.name || watchedDetails.title
@@ -36,8 +39,10 @@ export default function WatchedItem(props) {
 
             let watchedDetailsTemp = await fetch(watchedDetailsUrl).then(res => res.json())
             let watchedCreditsTemp = await fetch(watchedCreditsUrl).then(res => res.json())
+            // let displayCommentsTemp = await myWatchAPI.getComments(props.tmdBid)
             setWatchedDetails(watchedDetailsTemp)
             setWatchedCredits(watchedCreditsTemp)
+            // setDisplayComments(displayCommentsTemp)
         }
         else if (props.mediaType === "tv") {
             let watchedDetailsUrl = `https://api.themoviedb.org/3/tv/${props.tmdBid}?api_key=${API_KEY}&language=en-US`
@@ -45,27 +50,42 @@ export default function WatchedItem(props) {
 
             let watchedDetailsTemp = await fetch(watchedDetailsUrl).then(res => res.json())
             let watchedCreditsTemp = await fetch(watchedCreditsUrl).then(res => res.json())
+            // let displayCommentsTemp = await myWatchAPI.getComments(props.tmdBid)
+            // setDisplayComments(displayCommentsTemp)
             setWatchedDetails(watchedDetailsTemp)
             setWatchedCredits(watchedCreditsTemp)
+            
         } else if (props.mediaType === "person") {
             let watchedDetailsUrl = `https://api.themoviedb.org/3/person/${props.tmdBid}?api_key=${API_KEY}&language=en-US`
             let watchedCreditsUrl = `https://api.themoviedb.org/3/person/${props.tmdBid}/credits?api_key=${API_KEY}&language=en-US`
 
             let watchedDetailsTemp = await fetch(watchedDetailsUrl).then(res => res.json())
             let watchedCreditsTemp = await fetch(watchedCreditsUrl).then(res => res.json())
+            // let displayCommentsTemp = await myWatchAPI.getComments(props.tmdBid)
+            // setDisplayComments(displayCommentsTemp)
             setWatchedDetails(watchedDetailsTemp)
             setWatchedCredits(watchedCreditsTemp)
+            
         }
     }
 
     useEffect(() => {
         getInfo()
+        
     }, []);
+
+   
 
     // console.log(watchedDetails.backdrop_path)
     console.log(watchedDetails.backdrop_path || watchedDetails.profile_path)
     console.log(watchedDetails.title || watchedDetails.name)
-    console.log(props.comments)
+    console.log(watchedDetails.comments)
+    console.log(watchedDetails.id)
+    console.log(watchedDetails.id)
+
+    let myWatchComments
+
+   
 
     return (
         <>
@@ -74,11 +94,12 @@ export default function WatchedItem(props) {
                 <Card.Img className="rounded" variant="none" src={itemImg} />
                 <Button className="m-2" variant="primary" onClick={() => setModalShow(true)}>Details</Button>
                 <DetailModal
+                   
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                     watchedDetails={watchedDetails}
                     mediaType={props.mediaType}
-                    watchedCredits = {watchedCredits}
+                    watchedCredits={watchedCredits}
                     handleAddToMyWatch={props.handleAddToMyWatch}
                     seenBoolean={props.seenBoolean}
                     user={props.user}
