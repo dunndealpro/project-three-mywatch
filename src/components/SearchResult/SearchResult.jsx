@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react';
+import SeenSwitch from '../SeenSwitch/SeenSwitch';
 
 
 export default function SearchResult(props) {
@@ -74,10 +75,17 @@ export default function SearchResult(props) {
                     <Card.Text>
                         <SummaryText
                             searchSummary={summary}
+                            
                         />
                     </Card.Text>
                 </Card.Body>
                 <Card.Body>
+                    {/* <SeenSwitch
+                    handleAddToMyWatch={props.handleAddToMyWatch}
+                    result={props.result}
+                    mwMediaType={mwMediaType}
+                    /> */}
+
                     {/* <Form> */}
                         <Button className="btn-sm" onClick={() => props.handleAddToMyWatch(mwID, mwMediaType, mwTitle, mwName,mwHaveSeen)}>Add to MyWatch </Button>
                         { mwMediaType !== "person" &&

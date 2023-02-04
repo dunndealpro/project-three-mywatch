@@ -1,5 +1,5 @@
 import Carousel from 'react-bootstrap/Carousel';
-import SummaryText from '../SummaryText/SummaryText';
+import TrendingSummaryText from '../TrendingSummaryText/TrendingSummaryText';
 
 export default function LandingPoster(props) {
     // let trending1Url
@@ -32,7 +32,7 @@ console.log()
                 <Carousel.Caption>
                     <div className="rounded-2 bg-dark m-2 p-2 ">
                     <h3>{trendingTitle}</h3>
-                    <SummaryText 
+                    <TrendingSummaryText 
                     posterUrl={props.posterUrl}
                     trendingOverview = {trendingOverview}
                     handleAddToMyWatch = {props.handleAddToMyWatch}

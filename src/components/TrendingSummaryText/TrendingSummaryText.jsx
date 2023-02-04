@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import SeenSwitch from "../SeenSwitch/SeenSwitch";
 
 
-export default function SummaryText(props) {
+export default function TrendingSummaryText(props) {
   let content
   if (props.trendingOverview) {
     content = props.trendingOverview
@@ -56,7 +56,10 @@ export default function SummaryText(props) {
     return <div>
       {content}
       <br />
-      {/* <SeenSwitch/> */}
+      <SeenSwitch
+      posterUrl={props.posterUrl}
+      handleAddToMyWatch = {props.handleAddToMyWatch}
+      />
       {/* <Form.Check
                             onChange={e => handleChange(e)}
                             type="switch"
