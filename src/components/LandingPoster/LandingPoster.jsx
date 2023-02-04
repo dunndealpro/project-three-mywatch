@@ -16,6 +16,8 @@ if (props.posterUrl.title){
     trendingTitle=props.posterUrl.name
 }
 
+console.log()
+
 
 
     // if (props.landingPoster) {
@@ -30,7 +32,11 @@ if (props.posterUrl.title){
                 <Carousel.Caption>
                     <div className="rounded-2 bg-dark m-2 p-2 ">
                     <h3>{trendingTitle}</h3>
-                    <SummaryText trendingOverview = {trendingOverview}/>
+                    <SummaryText 
+                    posterUrl={props.posterUrl}
+                    trendingOverview = {trendingOverview}
+                    handleAddToMyWatch = {props.handleAddToMyWatch}
+                    />
                     
                     </div>
                 </Carousel.Caption>

@@ -41,6 +41,7 @@ export default function App() {
     try {
 
       const response = await fetch(trendingUrl).then(res => res.json());
+      console.log("Trending Stuff:  ", response)
       setLandingPoster(response)
     } catch (error) {
       console.log("Error! ", error)

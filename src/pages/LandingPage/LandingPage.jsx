@@ -34,7 +34,10 @@ export default function LandingPage(props) {
                             <Carousel.Item className='' interval={3500} key={posterUrl.id}>
                                 <LandingPoster
                                     key={posterUrl.id}
-                                    posterUrl={posterUrl} />
+                                    posterUrl={posterUrl} 
+                                    
+                                    handleAddToMyWatch = {props.handleAddToMyWatch}/>
+                                    
                             </Carousel.Item>
                         )}
                     </Carousel>
