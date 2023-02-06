@@ -12,6 +12,8 @@ import SeenSwitch from '../SeenSwitch/SeenSwitch';
 
 export default function SearchResult(props) {
 
+    console.log(props.result.known_for)
+
     const [display, setDisplay] = useState("I have not seen this")
     const [seen, setSeen] = useState()
 
@@ -25,17 +27,18 @@ export default function SearchResult(props) {
     let mwTitle = props.result.title
     let mwName = props.result.name
 
-    if (props.result.backdrop_path){
+    if (props.result.backdrop_path) {
         searchImg = `https://image.tmdb.org/t/p/original/${props.result.backdrop_path}`
-    }else if(props.result.profile_path){
+    } else if (props.result.profile_path) {
         searchImg = `https://image.tmdb.org/t/p/original/${props.result.profile_path}`
     }
-    
-    if (props.result.overview){
+
+    if (props.result.overview) {
         summary = props.result.overview
-    } else if(props.result.known_for_department){
-        summary = props.result.known_for_department
-    }else{
+    } else if (props.result.known_for_department) {
+        // summary = props.result.known_for_department
+        summary = "Known for their " + props.result.known_for_department
+    } else {
         summary = "no info available"
     }
 
@@ -59,11 +62,11 @@ export default function SearchResult(props) {
         }
         console.log("State: ", display)
         console.log("haveSeen? ", haveSeen)
-        return( haveSeen)
+        return (haveSeen)
     }
 
-    let mwHaveSeen =seen
-    
+    let mwHaveSeen = seen
+    console.log(mwMediaType)
 
     return (
         <>
@@ -75,7 +78,7 @@ export default function SearchResult(props) {
                     <Card.Text>
                         <SummaryText
                             searchSummary={summary}
-                            
+
                         />
                     </Card.Text>
                 </Card.Body>
@@ -87,19 +90,19 @@ export default function SearchResult(props) {
                     /> */}
 
                     {/* <Form> */}
-                        <Button className="btn-sm" onClick={() => props.handleAddToMyWatch(mwID, mwMediaType, mwTitle, mwName,mwHaveSeen)}>Add to MyWatch </Button>
-                        { mwMediaType !== "person" &&
-                       <>
-                        <Form.Check
-                            onChange={e => handleChange(e)}
-                            type="switch"
-                            id="custom-switch"                           
-                        />
-                       
+                    <Button className="btn-sm" onClick={() => props.handleAddToMyWatch(mwID, mwMediaType, mwTitle, mwName, mwHaveSeen)}>Add to MyWatch </Button>
+                    {mwMediaType !== "person" &&
+                        <>
+                            <Form.Check
+                                onChange={e => handleChange(e)}
+                                type="switch"
+                                id="custom-switch"
+                            />
 
-                        <Form.Check.Label>{display}</Form.Check.Label>
-                       </>
-}
+
+                            <Form.Check.Label>{display}</Form.Check.Label>
+                        </>
+                    }
 
                     {/* </Form> */}
                     {/* <Card.Link href="#">Card Link</Card.Link>

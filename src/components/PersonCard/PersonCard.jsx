@@ -16,7 +16,7 @@ export default function PersonCard(props){
     // let tempimg = props.cast.profile_path || props.cast.backdrop_path
     // tempimg = `https://image.tmdb.org/t/p/original/${tempimg}`
 
-    console.log("media type?!@?:  ", props.cast.media_type)
+    console.log("media type?!@?:  ", props.watchedCredits.cast)
 
     return(
         <>
