@@ -77,11 +77,11 @@ export default function WatchedItem(props) {
    
 
     // console.log(watchedDetails.backdrop_path)
-    console.log(watchedDetails.backdrop_path || watchedDetails.profile_path)
-    console.log(watchedDetails.title || watchedDetails.name)
-    console.log(watchedDetails.comments)
-    console.log(watchedDetails.id)
-    console.log(watchedDetails.id)
+    // console.log(watchedDetails.backdrop_path || watchedDetails.profile_path)
+    // console.log(watchedDetails.title || watchedDetails.name)
+    // console.log(watchedDetails.comments)
+    // console.log(watchedDetails.id)
+    // console.log(watchedDetails.id)
 
     let myWatchComments
 

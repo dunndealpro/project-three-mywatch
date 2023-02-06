@@ -28,7 +28,7 @@ export default function SeenSwitch(props) {
 
     if(props.posterUrl )
     {
-        console.log("from trending page")
+        // console.log("from trending page")
     mwMediaType = props.posterUrl.media_type 
     mwTitle = props.posterUrl.title
     mwName = props.posterUrl.name
@@ -37,8 +37,14 @@ export default function SeenSwitch(props) {
 
     if(props.cast )
     {
-        console.log("from my watch page")
+        // console.log("from my watch page")
+        
     mwMediaType = props.cast.media_type || props.cast.known_for_department
+    console.log(props.cast.media_type)
+    if (props.cast.known_for_department){
+        mwMediaType = "person"
+    }
+
     // mwMediaType = "person"
     mwTitle = props.cast.title
     mwName = props.cast.name
@@ -64,12 +70,12 @@ export default function SeenSwitch(props) {
 
     let mwHaveSeen =seen
 
-    console.log(mwMediaType)
+    // console.log(mwMediaType)
 
     return (
         <>
               <Button className="btn-sm" onClick={() => props.handleAddToMyWatch(mwID, mwMediaType, mwTitle, mwName,mwHaveSeen)}>Add to MyWatch </Button>
-                        { mwMediaType !==  "Acting" &&
+                        { mwMediaType !==  "person" &&
                        <>
                         <Form.Check
                             onChange={e => handleChange(e)}

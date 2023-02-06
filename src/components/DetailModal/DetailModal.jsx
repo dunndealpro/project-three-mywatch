@@ -51,7 +51,7 @@ export default function DetailModal(props) {
         mediaType = "Person"
     }
 
-    console.log("Modal: ", props.watchedCredits)
+    // console.log("Modal: ", props.watchedCredits)
 
     if (props.watchedDetails.backdrop_path) {
         img = `https://image.tmdb.org/t/p/original${props.watchedDetails.poster_path}`
@@ -107,7 +107,7 @@ export default function DetailModal(props) {
     //     return( haveSeen)
     // }
 
-    console.log(props.comments)
+    // console.log(props.comments)
     // console.log(...props)
 
     return (
@@ -131,7 +131,7 @@ export default function DetailModal(props) {
                 <Container >
                     <Row>
                         <Col className="text-center">
-                            <Image className="rounded" src={img} width={250} />
+                            <Image  className="rounded" src={img} width={250} />
                    
                             <Form  >
                                 <Form.Group className="mb-3" controlId="userComment">
@@ -154,7 +154,7 @@ export default function DetailModal(props) {
                                     <Accordion.Header>{header2}</Accordion.Header>
                                     <Accordion.Body className="accordionCustom">
                                         {/* {cast} */}
-                                        {[props.watchedCredits.cast && props.watchedCredits.cast.map((cast) =>(
+                                        {[props.watchedCredits.cast && props.watchedCredits.cast.slice(0,1).map((cast) =>(
                                             <PersonCard   
                                                 key={cast.credit_id}                                         
                                                 cast={cast}
