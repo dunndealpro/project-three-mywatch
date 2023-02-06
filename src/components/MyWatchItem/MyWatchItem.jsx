@@ -57,7 +57,7 @@ export default function WatchedItem(props) {
             
         } else if (props.mediaType === "person") {
             let watchedDetailsUrl = `https://api.themoviedb.org/3/person/${props.tmdBid}?api_key=${API_KEY}&language=en-US`
-            let watchedCreditsUrl = `https://api.themoviedb.org/3/person/${props.tmdBid}/credits?api_key=${API_KEY}&language=en-US`
+            let watchedCreditsUrl = `https://api.themoviedb.org/3/person/${props.tmdBid}/combined_credits?api_key=${API_KEY}&language=en-US`
 
             let watchedDetailsTemp = await fetch(watchedDetailsUrl).then(res => res.json())
             let watchedCreditsTemp = await fetch(watchedCreditsUrl).then(res => res.json())

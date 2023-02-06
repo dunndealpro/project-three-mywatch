@@ -12,6 +12,7 @@ import * as myWatchAPI from "../../utilities/myWatch-api"
 
 import "./DetailModal.css"
 import CommentCard from '../CommentCard/CommentCard';
+import { Carousel } from 'react-bootstrap';
 
 export default function DetailModal(props) {
 
@@ -50,7 +51,7 @@ export default function DetailModal(props) {
         mediaType = "Person"
     }
 
-    console.log("Modal: ", props.watchedDetails.id)
+    console.log("Modal: ", props.watchedCredits)
 
     if (props.watchedDetails.backdrop_path) {
         img = `https://image.tmdb.org/t/p/original${props.watchedDetails.poster_path}`
@@ -107,6 +108,7 @@ export default function DetailModal(props) {
     // }
 
     console.log(props.comments)
+    // console.log(...props)
 
     return (
         <Modal
@@ -130,15 +132,7 @@ export default function DetailModal(props) {
                     <Row>
                         <Col className="text-center">
                             <Image className="rounded" src={img} width={250} />
-                            {/* <Form.Check
-                                onChange={e => handleChange(e)}
-                                type="switch"
-                                id="custom-switch"
-                            />
-
-
-                            <Form.Check.Label>{display}</Form.Check.Label> */}
-
+                   
                             <Form  >
                                 <Form.Group className="mb-3" controlId="userComment">
                                     <Form.Control className="m-3" as="textarea" rows={3} type="text" value={comment} placeholder="Enter Comment" onChange={handleChange} />
@@ -160,11 +154,16 @@ export default function DetailModal(props) {
                                     <Accordion.Header>{header2}</Accordion.Header>
                                     <Accordion.Body className="accordionCustom">
                                         {/* {cast} */}
-                                        <PersonCard
-                                            
-                                            cast={props.watchedCredits.cast}
-                                            handleAddToMyWatch={props.handleAddToMyWatch}
-                                        />
+                                        {[props.watchedCredits.cast && props.watchedCredits.cast.map((cast) =>(
+                                            <PersonCard   
+                                                key={cast.credit_id}                                         
+                                                cast={cast}
+                                                handleAddToMyWatch={props.handleAddToMyWatch}
+                                                watchedCredits={props.watchedCredits}
+                                                watchedDetails={props.watchedDetails}
+                                                mediaType={cast.media_type}
+                                            />
+                                    ))]}
                                     </Accordion.Body>
                                 </Accordion.Item>
                                 <Accordion.Item eventKey="2">

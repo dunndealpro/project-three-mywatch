@@ -15,11 +15,30 @@ export default function SeenSwitch(props) {
     const [display, setDisplay] = useState("I have not seen this")
     let haveSeen
 
-    console.log(props.mwMediaType)
-    let mwMediaType = props.posterUrl.media_type
-    let mwTitle = props.posterUrl.title
-    let mwName = props.posterUrl.name
-    let mwID = props.posterUrl.id
+    let mwMediaType 
+    let mwTitle
+    let mwName
+    let mwID 
+
+    // console.log(props.posterUrl.media_type )
+
+    
+
+    if(props.posterUrl )
+    {
+    mwMediaType = props.posterUrl.media_type 
+    mwTitle = props.posterUrl.title
+    mwName = props.posterUrl.name
+    mwID = props.posterUrl.id
+}
+
+    if(props.cast )
+    {
+    mwMediaType = props.cast.media_type 
+    mwTitle = props.cast.title
+    mwName = props.cast.name
+    mwID = props.cast.id
+}
 
     const handleChange = (e) => {
         haveSeen = e.target.checked

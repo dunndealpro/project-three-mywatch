@@ -1,4 +1,4 @@
-const Movie = require("../../models/movie");
+
 const User = require("../../models/user");
 const MyWatch = require("../../models/myWatch");
 const Comment = require("../../models/comment");
