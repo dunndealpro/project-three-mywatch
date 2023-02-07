@@ -22,6 +22,12 @@ export function addComment(userInfo, tmdBid, comment){
     return sendRequest(`${BASE_URL}/${tmdBid}/comment`, 'POST', { author: userInfo, content: comment })
 }
 
+export function deleteFromMyWatch(tmdBid){
+    console.log("remove from mywatch step 2", tmdBid)
+    return sendRequest(`${BASE_URL}/${tmdBid}`, 'DELETE', {tmdBid: tmdBid })
+
+}
+
 export function getComments(tmdBid){
     console.log("still getting comments")
     return sendRequest(`${BASE_URL}/${tmdBid}/comment`, 'GET')

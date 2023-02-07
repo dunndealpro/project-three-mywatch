@@ -69,6 +69,12 @@ export default function WatchedItem(props) {
         }
     }
 
+    async function deleteFromMyWatch(e){
+        console.log("remove clicked", props.tmdBid)
+
+        const myWatchToBeDeleted =  await myWatchAPI.deleteFromMyWatch(props.tmdBid)
+    }
+
     useEffect(() => {
         getInfo()
         
@@ -93,6 +99,7 @@ export default function WatchedItem(props) {
                 <Card.Title className="m-2 fw-bold">{title}</Card.Title>
                 <Card.Img className="rounded" variant="none" src={itemImg} />
                 <Button className="m-2" variant="primary" onClick={() => setModalShow(true)}>Details</Button>
+                <Button className='m-2' variant='danger' onClick={e => deleteFromMyWatch(e)}>Remove From MyWatch</Button>
                 <DetailModal
                    
                     show={modalShow}
