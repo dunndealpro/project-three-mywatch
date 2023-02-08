@@ -4,15 +4,20 @@ const BASE_URL = '/api/mywatch';
 
 // const payDirt = [{movieId},{ movieTitle}, {check}]
 
-export function addToMyWatch(mwID, mwMediaType, mwTitle, mwName, mwHaveSeen){
-    console.log('add to mywatch step 2 ', mwID, mwMediaType, mwTitle, mwName, mwHaveSeen)
+export function getMyWatch(search){
+    console.log("Get My Watch db results", search)
+    return sendRequest (`${BASE_URL}/`, 'PUT', {mwName: search})
+}
+
+export function addToMyWatch(mwID, mwName, mwMediaType, mwTitle, mwHaveSeen){
+    console.log('add to mywatch step 2 ', mwID, mwName, mwMediaType, mwTitle,  mwHaveSeen)
     
-    return sendRequest(`${BASE_URL}/mywatch/${mwID}`, 'POST', {id: mwID, mwMediaType: mwMediaType, mwTitle: mwTitle, mwName: mwName, mwHaveSeen: mwHaveSeen} )
+    return sendRequest(`${BASE_URL}/mywatch/${mwID}`, 'POST', {id: mwID, mwName: mwName, mwMediaType: mwMediaType, mwTitle: mwTitle,  mwHaveSeen: mwHaveSeen} )
 }
 
 export function getWatched(){
     console.log("My Watch step 2")
-    return sendRequest(`${BASE_URL}/mywatch/`, 'GET',  )
+    return sendRequest(`${BASE_URL}/mywatch/`, 'GET', )
 }
 
 export function addComment(userInfo, tmdBid, comment){

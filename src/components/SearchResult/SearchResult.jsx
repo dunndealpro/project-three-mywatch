@@ -68,6 +68,8 @@ export default function SearchResult(props) {
     let mwHaveSeen = seen
     console.log(mwMediaType)
 
+    mwName = mwName || mwTitle
+
     return (
         <>
             <Card className="m-2" style={{ width: '18rem' }}>
@@ -90,7 +92,7 @@ export default function SearchResult(props) {
                     /> */}
 
                     {/* <Form> */}
-                    <Button className="btn-sm" onClick={() => props.handleAddToMyWatch(mwID, mwMediaType, mwTitle, mwName, mwHaveSeen)}>Add to MyWatch </Button>
+                    <Button className="btn-sm" onClick={() => props.handleAddToMyWatch(mwID, mwName, mwMediaType, mwTitle,  mwHaveSeen)}>Add to MyWatch </Button>
                     {mwMediaType !== "person" &&
                         <>
                             <Form.Check

@@ -1,21 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// const commentSchema = new Schema(
-//   {
-//     author: { type: Schema.Types.ObjectId, ref: "User" },
-
-//     date: { type: Date, Default: Date.now },
-//     content: { type: String },
-//   },
-//   {
-//     timestamps: true,
-//   }
-// );
-
 const myWatchSchema = new Schema({
   tmdBid: {
     type: Number,
+  },
+
+  mwName: {
+    type: String,
   },
 
   mediaType: {
@@ -25,10 +17,10 @@ const myWatchSchema = new Schema({
   comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
 });
 
-myWatchSchema.statics.getMyWatch = function (mwID, mwMediaType) {
+myWatchSchema.statics.getMyWatch = function (mwID, mwName, mwMediaType) {
   return this.findOneAndUpdate(
     { tmdBid: mwID },
-    { tmdBid: mwID, mediaType: mwMediaType },
+    { tmdBid: mwID, mwName: mwName, mediaType: mwMediaType },
     { upsert: true, new: true }
   );
 };

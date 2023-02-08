@@ -26,6 +26,7 @@ export default function App() {
   const [watched, setWatched] = useState([])
   const [notWatched, setNotWatched] = useState([])
   const [myActors, setMyActors] = useState([])
+  const [mwSearch, setMwSearch] = useState([])
  
 
 
@@ -53,7 +54,10 @@ export default function App() {
     try {
       console.log("Search: ", search)
       const response = await fetch(searchUrl).then(res => res.json());
+      const mwResults = await myWatchAPI.getMyWatch(search)
+      console.log(mwResults)
       setSearchResults(response);
+      setMwSearch(mwResults)
       console.log(response);
       setSearch("")
     } catch (error) {
@@ -61,6 +65,7 @@ export default function App() {
       console.error(error);
     }
     console.log(search)
+    console.log(mwSearch)
   }
 
   async function getWatched(){
@@ -76,9 +81,9 @@ export default function App() {
 
   }
 
-  async function handleAddToMyWatch(mwID, mwMediaType, mwTitle, mwName, MWHaveSeen) {
-    console.log("Add to myWatch ", mwID, mwMediaType, mwTitle, mwName, "HaveSeen: ", MWHaveSeen)
-    const myWatch = await myWatchAPI.addToMyWatch(mwID, mwMediaType, mwTitle, mwName, MWHaveSeen)
+  async function handleAddToMyWatch(mwID,  mwName, mwMediaType, mwTitle, MWHaveSeen) {
+    console.log("Add to myWatch ", mwID, mwName, mwMediaType,   mwTitle,  "HaveSeen: ", MWHaveSeen)
+    const myWatch = await myWatchAPI.addToMyWatch(mwID, mwName, mwMediaType, mwTitle,  MWHaveSeen)
     // const myMovie = await usersAPI.addToMyMovies(movieId)
     console.log(myWatch)
     // console.log("User Model My Movies?", myMovie)

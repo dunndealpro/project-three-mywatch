@@ -69,12 +69,13 @@ export default function SeenSwitch(props) {
     }
 
     let mwHaveSeen =seen
+    mwName = mwName || mwTitle
 
     // console.log(mwMediaType)
 
     return (
         <>
-              <Button className="btn-sm" onClick={() => props.handleAddToMyWatch(mwID, mwMediaType, mwTitle, mwName,mwHaveSeen)}>Add to MyWatch </Button>
+              <Button className="btn-sm" onClick={() => props.handleAddToMyWatch(mwID,  mwName, mwMediaType, mwTitle,mwHaveSeen)}>Add to MyWatch </Button>
                         { mwMediaType !==  "person" &&
                        <>
                         <Form.Check

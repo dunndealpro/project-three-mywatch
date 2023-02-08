@@ -30,7 +30,7 @@ console.log()
             <div className="rounded">
                 <img width="100%" src={trendingUrl} alt="" />
                 <Carousel.Caption>
-                    <div className="rounded-2 bg-dark m-2 p-2 ">
+                    <div className="rounded-2 bg-dark m-2 p-2 d-block w-100">
                     <h3>{trendingTitle}</h3>
                     <TrendingSummaryText 
                     posterUrl={props.posterUrl}

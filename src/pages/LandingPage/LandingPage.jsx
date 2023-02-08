@@ -23,13 +23,13 @@ export default function LandingPage(props) {
 
     return (
         <>
-            <Container className='bg-light w-75'>
+            <Container className='bg-light fluid'>
                 <div className='fs-1 text-center'>Welcome To MyWatch!</div>
                 <div className='fs-3 text-center'>(witty comment goes here)</div>
-                <Container className='w-75 text-center'>
+                <Container className='text-center'>
                     <div className='fs-2'>Trending Today!</div>
 
-                    <Carousel className='m-2'>
+                    <Carousel className='m-2 w-100'>
                         {props.landingPoster.results && props.landingPoster.results.map((posterUrl) =>
                             <Carousel.Item className='' interval={3500} key={posterUrl.id}>
                                 <LandingPoster

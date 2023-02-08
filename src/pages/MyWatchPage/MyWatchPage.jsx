@@ -17,7 +17,7 @@ export default function MyWatchPage(props) {
         props.getWatched()
     }, [])
 
-     userTest = props.watched.watched
+     userTest = props.watched
     console.log("userTEst  ", userTest)
 
 // console.log(props.watched.watched)
