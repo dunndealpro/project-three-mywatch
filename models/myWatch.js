@@ -7,7 +7,7 @@ const myWatchSchema = new Schema({
   },
 
   mwName: {
-    type: String,
+    type: String, lowercase: true
   },
 
   mediaType: {

@@ -26,7 +26,7 @@ export default function App() {
   const [watched, setWatched] = useState([])
   const [notWatched, setNotWatched] = useState([])
   const [myActors, setMyActors] = useState([])
-  const [mwSearch, setMwSearch] = useState([])
+  const [mwSearch, setMwSearch] = useState(false)
  
 
 
@@ -120,6 +120,7 @@ export default function App() {
               getSearch={getSearch}
               searchResults={searchResults}
               handleAddToMyWatch={handleAddToMyWatch}
+              mwSearch={mwSearch}
 
             // getLandingPoster={getLandingPoster}
             />} />

@@ -76,6 +76,7 @@ export default function WatchedItem(props) {
     }
 
     useEffect(() => {
+        console.log("useEffect?")
         getInfo()
         
     }, []);

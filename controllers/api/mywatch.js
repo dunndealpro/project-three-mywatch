@@ -15,7 +15,8 @@ module.exports = {
 
 async function getMyWatch(req, res) {
   console.log("Searching MyWatch Database", req.body);
-  let myWatchSearch = await MyWatch.findOne(req.body);
+  let myWatchSearch = await MyWatch.findOne(req.body)
+  .populate({ path: "comments", populate: { path: "author", model: "User" } }).exec()
   console.log(myWatchSearch);
   res.json(myWatchSearch);
 }

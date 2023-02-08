@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react';
 import SeenSwitch from '../SeenSwitch/SeenSwitch';
+import DetailModal from '../DetailModal/DetailModal';
 
 
 export default function SearchResult(props) {
@@ -80,9 +81,9 @@ export default function SearchResult(props) {
                     <Card.Text>
                         <SummaryText
                             searchSummary={summary}
-
                         />
                     </Card.Text>
+                    {/* <DetailModal/> */}
                 </Card.Body>
                 <Card.Body>
                     {/* <SeenSwitch
