@@ -15,41 +15,61 @@ export default function SeenSwitch(props) {
     const [display, setDisplay] = useState("I have not seen this")
     let haveSeen
 
-    let mwMediaType 
+    let mwMediaType
     let mwTitle
     let mwName
-    let mwID 
+    let mwID
+
+    let mwMediaTypeMw
+    let mwTitleMw
+    let mwNameMw
+    let mwIDMw
 
     let person = "person"
 
     // console.log(props.posterUrl.media_type )
 
-    
+    // if (props.watchedDetails) {
+    //     console.log("watchedDetails ", props.watchedDetails)
+    //     mwMediaTypeMw = props.watchedDetails.media_type
+    //     mwTitleMw = props.watchedDetails.title
+    //     mwNameMw = props.watchedDetails.name
+    //     mwIDMw = props.watchedDetails.id
+    //     // console.log()
 
-    if(props.posterUrl )
-    {
+    //     console.log(mwIDMw)
+    // console.log(mwNameMw)
+    // console.log(mwTitleMw)
+    // console.log(mwMediaTypeMw)
+    // }
+
+    if (props.posterUrl) {
         // console.log("from trending page")
-    mwMediaType = props.posterUrl.media_type 
-    mwTitle = props.posterUrl.title
-    mwName = props.posterUrl.name
-    mwID = props.posterUrl.id
-}
-
-    if(props.cast )
-    {
-        // console.log("from my watch page")
-        
-    mwMediaType = props.cast.media_type || props.cast.known_for_department
-    console.log(props.cast.media_type)
-    if (props.cast.known_for_department){
-        mwMediaType = "person"
+        mwMediaType = props.posterUrl.media_type
+        mwTitle = props.posterUrl.title
+        mwName = props.posterUrl.name
+        mwID = props.posterUrl.id
     }
 
-    // mwMediaType = "person"
-    mwTitle = props.cast.title
-    mwName = props.cast.name
-    mwID = props.cast.id
-}
+    if (props.cast) {
+        // console.log("from my watch page")
+
+        mwMediaType = props.cast.media_type || props.cast.known_for_department
+        console.log(props.cast.media_type)
+        if (props.cast.known_for_department) {
+            mwMediaType = "person"
+
+        }
+
+        // mwMediaType = "person"
+        mwTitle = props.cast.title
+        mwName = props.cast.name
+        mwID = props.cast.id
+        console.log(mwID)
+    console.log(mwName)
+    console.log(mwTitle)
+    console.log(mwMediaType)
+    }
 
     const handleChange = (e) => {
         haveSeen = e.target.checked
@@ -65,29 +85,51 @@ export default function SeenSwitch(props) {
         }
         console.log("State: ", display)
         console.log("haveSeen? ", haveSeen)
-        return( haveSeen)
+        return (haveSeen)
     }
 
-    let mwHaveSeen =seen
+    let mwHaveSeen = seen
     mwName = mwName || mwTitle
+    console.log(mwHaveSeen)
+
+    if (props.searchedDetails) {
+        console.log("props maybe?  ", props.mediaTypeMw)
+        console.log("watchedDetails ", props.searchedDetails)
+        mwMediaType = props.mediaTypeMw
+        mwTitle = props.searchedDetails.title
+        mwName = props.searchedDetails.name
+        mwID = props.searchedDetails.id
+        // console.log()
+
+        console.log(mwID)
+    console.log(mwName)
+    console.log(mwTitle)
+    console.log(mwMediaType)
+    }
+
+    console.log(mwID)
+    console.log(mwName)
+    console.log(mwTitle)
+    console.log(mwMediaType)
+    console.log((props.mediaTypeMw))
 
     // console.log(mwMediaType)
 
     return (
         <>
-              <Button className="btn-sm" onClick={() => props.handleAddToMyWatch(mwID,  mwName, mwMediaType, mwTitle,mwHaveSeen)}>Add to MyWatch </Button>
-                        { mwMediaType !==  "person" &&
-                       <>
-                        <Form.Check
-                            onChange={e => handleChange(e)}
-                            type="switch"
-                            id="custom-switch"                           
-                        />
-                       
+            <Button className="btn-sm" onClick={() => props.handleAddToMyWatch(mwID, mwName, mwMediaType, mwTitle, mwHaveSeen)}>Add to MyWatch </Button>
+            {mwMediaType !== "person" &&
+                <>
+                    <Form.Check
+                        onChange={e => handleChange(e)}
+                        type="switch"
+                        id="custom-switch"
+                    />
 
-                        <Form.Check.Label>{display}</Form.Check.Label>
-                       </>
-}
+
+                    <Form.Check.Label>{display}</Form.Check.Label>
+                </>
+            }
         </>
 
     )

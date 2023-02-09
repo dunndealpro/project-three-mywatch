@@ -127,6 +127,7 @@ console.log(mwSearch)
                     watched={props.watched}
                     notWatched={props.notWatched}
                     myActors={props.myActors}
+                    result={props.result}
                 />
                 
                

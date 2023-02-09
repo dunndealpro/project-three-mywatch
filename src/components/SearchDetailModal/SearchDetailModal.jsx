@@ -226,7 +226,11 @@ export default function SearchDetailModal(props) {
                                 </Button>
                             </Form>
                 } */}
-                            <SeenSwitch />
+                            <SeenSwitch 
+                            handleAddToMyWatch={props.handleAddToMyWatch}
+                            searchedDetails={props.searchedDetails}
+                            mediaTypeMw={props.result.media_type}
+                            />
                         </Col>
                         <Col>
                             <Accordion defaultActiveKey="0">

@@ -26,7 +26,7 @@ export default function App() {
   const [watched, setWatched] = useState([])
   const [notWatched, setNotWatched] = useState([])
   const [myActors, setMyActors] = useState([])
-  const [mwSearch, setMwSearch] = useState(false)
+  // const [mwSearch, setMwSearch] = useState(false)
 
 
 
@@ -65,8 +65,8 @@ export default function App() {
       console.error(error);
     }
     getWatched()
-    console.log(search)
-    console.log(mwSearch)
+    // console.log(search)
+    // console.log(mwSearch)
   }
 
   async function getWatched() {
@@ -121,7 +121,7 @@ export default function App() {
               getSearch={getSearch}
               searchResults={searchResults}
               handleAddToMyWatch={handleAddToMyWatch}
-              mwSearch={mwSearch}
+              // mwSearch={mwSearch}
               watched={watched}
               notWatched={notWatched}
               myActors={myActors}
