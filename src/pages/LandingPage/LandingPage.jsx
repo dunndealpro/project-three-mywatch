@@ -53,6 +53,9 @@ export default function LandingPage(props) {
                     searchResults={props.searchResults}
                     handleAddToMyWatch={props.handleAddToMyWatch}
                     mwSearch={props.mwSearch}
+                    watched={props.watched}
+                    notWatched={props.notWatched}
+                    myActors={props.myActors}
                     />
 
             </Container>

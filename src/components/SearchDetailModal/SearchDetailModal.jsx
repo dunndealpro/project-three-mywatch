@@ -13,12 +13,46 @@ import * as myWatchAPI from "../../utilities/myWatch-api"
 import "./DetailModal.css"
 import CommentCard from '../CommentCard/CommentCard';
 import { Carousel } from 'react-bootstrap';
+import SeenSwitch from '../SeenSwitch/SeenSwitch';
 
 export default function SearchDetailModal(props) {
 
-console.log(props.searchedDetails)
+    console.log(props.searchedDetails) //searched 
+    console.log(props.watched) //users movies
 
-let tmdBid 
+    let isInMyWatched = Boolean(false)
+    let isInMyNotWatched = Boolean(false)
+    let isInMyActors = Boolean(false)
+
+    // while (isInMyWatch === false) {
+    props.watched.forEach((watch) => {
+        console.log('watch test')
+        if (watch.tmdBid === props.searchedDetails.id) {
+            return isInMyWatched = true
+        }
+    })
+    props.notWatched.forEach((watch) => {
+        console.log('not watch test')
+
+        if (watch.tmdBid === props.searchedDetails.id) {
+            return isInMyNotWatched = true
+        }
+    })
+    props.myActors.forEach((watch) => {
+        console.log(' my actor test')
+
+        if (watch.tmdBid === props.searchedDetails.id) {
+            return isInMyActors = true
+        }
+    })
+    // }
+
+    let tmdBid
+
+    console.log("isInMyWatched: ", isInMyWatched)
+    console.log("isInMyNotWatched: ", isInMyNotWatched)
+    console.log("isInMyActors: ", isInMyActors)
+
 
     const [comment, setComment] = useState("")
 
@@ -27,15 +61,17 @@ let tmdBid
 
     let haveSeen
 
-    let mwName 
+    let mwName
     let comments
-    if(props.mwSearch ){
-    // mwName = props.mwSearch.mwName
-        comments = props.mwSearch.comments
+    if (props.mwSearch) {
+        // mwName = props.mwSearch.mwName
+        // comments = props.mwSearch.comments
         tmdBid = props.mwSearch.tmdBid
         console.log(tmdBid, props.searchedDetails.id)
         console.log(mwName)
-}
+    }
+
+
 
     let header2 = ""
     let img
@@ -126,6 +162,8 @@ let tmdBid
     // console.log(props.comments)
     // console.log(...props)
 
+
+
     return (
         <Modal
             {...props}
@@ -147,8 +185,18 @@ let tmdBid
                 <Container >
                     <Row>
                         <Col className="text-center">
-                            <Image  className="rounded" src={img} width={250} />
-                   
+                            <Image className="rounded" src={img} width={250} />
+                            {isInMyWatched || isInMyNotWatched || isInMyActors &&
+                                <Form  >
+                                    <Form.Group className="mb-3" controlId="userComment">
+                                        <Form.Control className="m-3" as="textarea" rows={3} type="text" value={comment} placeholder="Enter Comment" onChange={handleChange} />
+                                    </Form.Group>
+                                    <Button onClick={e => handleAddComment(e)} variant="primary" >
+                                        Submit
+                                    </Button>
+                                </Form>
+                            }
+                            {/* {  isInMyWatched &&
                             <Form  >
                                 <Form.Group className="mb-3" controlId="userComment">
                                     <Form.Control className="m-3" as="textarea" rows={3} type="text" value={comment} placeholder="Enter Comment" onChange={handleChange} />
@@ -157,6 +205,28 @@ let tmdBid
                                     Submit
                                 </Button>
                             </Form>
+                }
+                {  isInMyNotWatched  &&
+                            <Form  >
+                                <Form.Group className="mb-3" controlId="userComment">
+                                    <Form.Control className="m-3" as="textarea" rows={3} type="text" value={comment} placeholder="Enter Comment" onChange={handleChange} />
+                                </Form.Group>
+                                <Button onClick={e => handleAddComment(e)} variant="primary" >
+                                    Submit
+                                </Button>
+                            </Form>
+                }
+                {  isInMyActors  &&
+                            <Form  >
+                                <Form.Group className="mb-3" controlId="userComment">
+                                    <Form.Control className="m-3" as="textarea" rows={3} type="text" value={comment} placeholder="Enter Comment" onChange={handleChange} />
+                                </Form.Group>
+                                <Button onClick={e => handleAddComment(e)} variant="primary" >
+                                    Submit
+                                </Button>
+                            </Form>
+                } */}
+                            <SeenSwitch />
                         </Col>
                         <Col>
                             <Accordion defaultActiveKey="0">
@@ -170,39 +240,34 @@ let tmdBid
                                     <Accordion.Header>{header2}</Accordion.Header>
                                     <Accordion.Body className="accordionCustom">
                                         {/* {cast} */}
-                                        {[props.searchedCredits.cast && props.searchedCredits.cast.slice(0,1).map((cast) =>(
-                                            <PersonCard   
-                                                key={cast.credit_id}                                         
+                                        {[props.searchedCredits.cast && props.searchedCredits.cast.slice(0, 1).map((cast) => (
+                                            <PersonCard
+                                                key={cast.credit_id}
                                                 cast={cast}
                                                 handleAddToMyWatch={props.handleAddToMyWatch}
                                                 watchedCredits={props.searchedCredits}
                                                 watchedDetails={props.searchedDetails}
                                                 mediaType={cast.media_type}
                                             />
-                                    ))]}
+                                        ))]}
                                     </Accordion.Body>
                                 </Accordion.Item>
-                                {tmdBid == props.searchedDetails.id && 
-
+                                {/* {tmdBid == props.searchedDetails.id && */}
+                                {props.mwSearch &&
                                     <Accordion.Item eventKey="2">
                                         <Accordion.Header>Comments</Accordion.Header>
                                         <Accordion.Body className="accordionCustom">
-                                            {comments && comments.map((comment) => (
+                                            {props.mwSearch.comments && props.mwSearch.comments.map((comment) => (
                                                 <CommentCard
-                                                key={comment._id}
+                                                    key={comment._id}
                                                     comment={comment}
                                                 />
-    
                                             ))}
-    
+
                                         </Accordion.Body>
                                     </Accordion.Item>
-
-                                            }
-                                
-                                
+                                }
                             </Accordion>
-
                         </Col>
                     </Row>
                 </Container>

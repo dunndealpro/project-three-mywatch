@@ -12,13 +12,14 @@ import * as myWatchAPI from "../../utilities/myWatch-api"
 
 
 export default function SearchItem(props) {
-
+console.log(props.result)
    
 
     const [searchedDetails, setSearchedDetails] = useState([])
     const [searchedCredits, setSearchedCredits] = useState([])
     const [modalShow, setModalShow] = useState(false);
     // const [displayComments, setDisplayComments] = useState([])
+    const [mwSearch, setMwSearch] = useState(false)
 
     let itemImg
     let title = searchedDetails.name || searchedDetails.title
@@ -73,6 +74,14 @@ export default function SearchItem(props) {
             setSearchedCredits(searchedCreditsTemp)
             
         }
+        searchMyWatch()
+    }
+
+    async function searchMyWatch(){
+        const mwResults = await myWatchAPI.getMyWatch(props.result.id)
+      console.log(mwResults)
+      setMwSearch(mwResults)
+    
     }
 
     // async function deleteFromMyWatch(e){
@@ -89,7 +98,7 @@ export default function SearchItem(props) {
         
     }, []);
 
-
+console.log(mwSearch)
     let myWatchComments
 
     // console.log("myWatch exists: (true or false): ", props.mwSearch.comments)
@@ -114,7 +123,10 @@ export default function SearchItem(props) {
                     seenBoolean={props.seenBoolean}
                     user={props.user}
                     comments={props.comments}
-                    mwSearch={props.mwSearch}
+                    mwSearch={mwSearch}
+                    watched={props.watched}
+                    notWatched={props.notWatched}
+                    myActors={props.myActors}
                 />
                 
                

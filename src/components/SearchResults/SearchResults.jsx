@@ -32,6 +32,9 @@ export default function SearchResults(props) {
                                     result={result}
                                     handleAddToMyWatch={props.handleAddToMyWatch}
                                     mwSearch={props.mwSearch}
+                                    watched={props.watched}
+                                    notWatched={props.notWatched}
+                                    myActors={props.myActors}
                                 />
                             ))}
 

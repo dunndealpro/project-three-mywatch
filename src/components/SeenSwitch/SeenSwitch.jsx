@@ -60,7 +60,7 @@ export default function SeenSwitch(props) {
             setSeen(true)
 
         } else {
-            setDisplay("I have not see this")
+            setDisplay("I have not seen this")
             setSeen(false)
         }
         console.log("State: ", display)

@@ -27,7 +27,7 @@ export default function App() {
   const [notWatched, setNotWatched] = useState([])
   const [myActors, setMyActors] = useState([])
   const [mwSearch, setMwSearch] = useState(false)
- 
+
 
 
   const API_KEY = "a72c1d466153d06b65f2879b369031d8"
@@ -54,21 +54,22 @@ export default function App() {
     try {
       console.log("Search: ", search)
       const response = await fetch(searchUrl).then(res => res.json());
-      const mwResults = await myWatchAPI.getMyWatch(search)
-      console.log(mwResults)
+      // const mwResults = await myWatchAPI.getMyWatch(search)
+      // console.log(mwResults)
+      // setMwSearch(mwResults)
       setSearchResults(response);
-      setMwSearch(mwResults)
       console.log(response);
       setSearch("")
     } catch (error) {
       console.log("Error!!>!>!")
       console.error(error);
     }
+    getWatched()
     console.log(search)
     console.log(mwSearch)
   }
 
-  async function getWatched(){
+  async function getWatched() {
     console.log("Get Watched")
     let watchedtemp = await myWatchAPI.getWatched()
     console.log(watchedtemp.watched)
@@ -77,13 +78,13 @@ export default function App() {
     setNotWatched(watchedtemp.notWatched)
     setWatched(watchedtemp.watched)
     setMyActors(watchedtemp.myActors)
-  
+
 
   }
 
-  async function handleAddToMyWatch(mwID,  mwName, mwMediaType, mwTitle, MWHaveSeen) {
-    console.log("Add to myWatch ", mwID, mwName, mwMediaType,   mwTitle,  "HaveSeen: ", MWHaveSeen)
-    const myWatch = await myWatchAPI.addToMyWatch(mwID, mwName, mwMediaType, mwTitle,  MWHaveSeen)
+  async function handleAddToMyWatch(mwID, mwName, mwMediaType, mwTitle, MWHaveSeen) {
+    console.log("Add to myWatch ", mwID, mwName, mwMediaType, mwTitle, "HaveSeen: ", MWHaveSeen)
+    const myWatch = await myWatchAPI.addToMyWatch(mwID, mwName, mwMediaType, mwTitle, MWHaveSeen)
     // const myMovie = await usersAPI.addToMyMovies(movieId)
     console.log(myWatch)
     // console.log("User Model My Movies?", myMovie)
@@ -95,7 +96,7 @@ export default function App() {
 
 
   useEffect(() => {
-    
+
     console.log("I fire once!")
     getLandingPoster()
     console.log(watched)
@@ -121,19 +122,22 @@ export default function App() {
               searchResults={searchResults}
               handleAddToMyWatch={handleAddToMyWatch}
               mwSearch={mwSearch}
+              watched={watched}
+              notWatched={notWatched}
+              myActors={myActors}
 
             // getLandingPoster={getLandingPoster}
             />} />
             <Route path="/search" element={<SearchPage />} />
-            <Route path="/mywatch" element={<MyWatchPage 
-            getWatched = {getWatched}
-            watched = {watched}
-            notWatched = {notWatched}
-            myActors = {myActors}
-            handleAddToMyWatch={handleAddToMyWatch}
-            user={user}
-            
-            
+            <Route path="/mywatch" element={<MyWatchPage
+              getWatched={getWatched}
+              watched={watched}
+              notWatched={notWatched}
+              myActors={myActors}
+              handleAddToMyWatch={handleAddToMyWatch}
+              user={user}
+
+
             />} />
           </Routes>
 

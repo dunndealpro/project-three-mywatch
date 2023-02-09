@@ -4,9 +4,9 @@ const BASE_URL = '/api/mywatch';
 
 // const payDirt = [{movieId},{ movieTitle}, {check}]
 
-export function getMyWatch(search){
-    console.log("Get My Watch db results", search)
-    return sendRequest (`${BASE_URL}/`, 'PUT', {mwName: search})
+export function getMyWatch(searchMyWatch){
+    console.log("Get My Watch db results", searchMyWatch)
+    return sendRequest (`${BASE_URL}/`, 'PUT', {tmdBid: searchMyWatch})
 }
 
 export function addToMyWatch(mwID, mwName, mwMediaType, mwTitle, mwHaveSeen){
