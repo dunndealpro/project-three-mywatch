@@ -99,7 +99,9 @@ export default function App() {
 
     console.log("I fire once!")
     getLandingPoster()
+    // handleAddToMyWatch()
     console.log(watched)
+    // getWatched() 
 
   }, [])
 

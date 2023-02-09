@@ -110,6 +110,13 @@ export default function DetailModal(props) {
     // console.log(props.comments)
     // console.log(...props)
 
+    let releaseDisplay 
+
+    if (mediaType == "Movie" || mediaType == "Television"){
+        releaseDisplay = mediaType + " - " + release
+        console.log(releaseDisplay)
+    }
+
     return (
         <Modal
             {...props}
@@ -122,17 +129,21 @@ export default function DetailModal(props) {
                     <span className='fs-2'>
                         {title}
                     </span>  &nbsp;&nbsp;
-                    <span className='fs-4 fw-light'>
-                        ({mediaType} - {release})
-                    </span>
+                    
+
+                    
+                        <span className='fs-4 fw-light'>
+                            {releaseDisplay}
+                        </span>
+                       
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body className="show-grid">
                 <Container >
                     <Row>
                         <Col className="text-center">
-                            <Image  className="rounded" src={img} width={250} />
-                   
+                            <Image className="rounded" src={img} width={250} />
+
                             <Form  >
                                 <Form.Group className="mb-3" controlId="userComment">
                                     <Form.Control className="m-3" as="textarea" rows={3} type="text" value={comment} placeholder="Enter Comment" onChange={handleChange} />
@@ -154,16 +165,16 @@ export default function DetailModal(props) {
                                     <Accordion.Header>{header2}</Accordion.Header>
                                     <Accordion.Body className="accordionCustom">
                                         {/* {cast} */}
-                                        {[props.watchedCredits.cast && props.watchedCredits.cast.slice(0,1).map((cast) =>(
-                                            <PersonCard   
-                                                key={cast.credit_id}                                         
+                                        {[props.watchedCredits.cast && props.watchedCredits.cast.slice(0, 1).map((cast) => (
+                                            <PersonCard
+                                                key={cast.credit_id}
                                                 cast={cast}
                                                 handleAddToMyWatch={props.handleAddToMyWatch}
                                                 watchedCredits={props.watchedCredits}
                                                 watchedDetails={props.watchedDetails}
                                                 mediaType={cast.media_type}
                                             />
-                                    ))]}
+                                        ))]}
                                     </Accordion.Body>
                                 </Accordion.Item>
                                 <Accordion.Item eventKey="2">
@@ -171,7 +182,7 @@ export default function DetailModal(props) {
                                     <Accordion.Body className="accordionCustom">
                                         {props.comments && props.comments.map((comment) => (
                                             <CommentCard
-                                            key={comment._id}
+                                                key={comment._id}
                                                 comment={comment}
                                             />
 
