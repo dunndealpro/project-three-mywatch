@@ -71,6 +71,7 @@ export default function DetailModal(props) {
         console.log(e.comment)
 
         setComment("")
+        props.getWatched()
         // console.log(userComment)        
     }
 

@@ -86,6 +86,7 @@ export default function App() {
     const myWatch = await myWatchAPI.addToMyWatch(mwID, mwName, mwMediaType, mwTitle, MWHaveSeen)
     // const myMovie = await usersAPI.addToMyMovies(movieId)
     console.log(myWatch)
+    getWatched()
     // console.log("User Model My Movies?", myMovie)
     // getAlreadyWatchedMovies()
     // setSelectedMovie(selectedMovie)
@@ -159,8 +160,8 @@ export default function App() {
             data-bs-target="navbar"
             // data-bs-root-margin="0px 0px -40%"
             data-bs-smooth-scroll="true"
-            data-offset="150"
-            data-bs-offset="140"
+            // data-offset="150"
+            // data-bs-offset="140"
             className="scrollspy-navbar bg-dark p-3 rounded-2 "
             tabIndex="0">
             <div id="home" className='p-2' height="25%">

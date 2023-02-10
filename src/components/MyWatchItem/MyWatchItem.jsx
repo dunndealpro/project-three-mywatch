@@ -76,6 +76,7 @@ export default function WatchedItem(props) {
         console.log("remove clicked", props.tmdBid)
 
         const myWatchToBeDeleted = await myWatchAPI.deleteFromMyWatch(props.tmdBid)
+        props.getWatched()
     }
 
     useEffect(() => {
@@ -113,6 +114,7 @@ export default function WatchedItem(props) {
                     display={props.display}
                     handleAddToMyWatch={props.handleAddToMyWatch}
                     mediaType={props.mediaType}
+                    getWatched={props.getWatched}
                 />
                 <DetailModal
                     show={modalShow}
@@ -124,6 +126,7 @@ export default function WatchedItem(props) {
                     seenBoolean={props.seenBoolean}
                     user={props.user}
                     comments={props.comments}
+                    getWatched={props.getWatched}
                 />
             </Card>
         </>

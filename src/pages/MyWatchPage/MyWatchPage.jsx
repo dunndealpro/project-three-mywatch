@@ -30,14 +30,15 @@ export default function MyWatchPage(props) {
     // }
 
     return (
-        <div className="text-center bg-light rounded pt-5 mt-5">
-            <h1>MyWatch Page</h1>
+        <div className="text-center bg-light rounded pt-5 mt-5 fs-4">
+            {/* <h1>MyWatch Page</h1> */}
             <Container className="bg-light rounded p-3 text-center">
                 <Tabs variant="pills"
                     defaultActiveKey="watchedItems"
                     id="fill-tab-example"
-                    className="mb-3"
+                    className="mb-3 bg-dark p-2 rounded"
                     fill
+                    
                 >
                     <Tab variant="pills" eventKey="watchedItems" title="Watched Items">
                         <Container className="text-center" >
@@ -55,6 +56,7 @@ export default function MyWatchPage(props) {
                                     watched={props.watched}
                                     notWatched={props.notWatched}
                                     myActors={props.myActors}
+                                    getWatched={props.getWatched}
                                 />
                             ))}
                         </Row>
@@ -78,6 +80,7 @@ export default function MyWatchPage(props) {
                                     watched={props.watched}
                                     notWatched={props.notWatched}
                                     myActors={props.myActors}
+                                    getWatched={props.getWatched}
                                 />
                             ))}
 
@@ -100,6 +103,7 @@ export default function MyWatchPage(props) {
                                     watched={props.watched}
                                     notWatched={props.notWatched}
                                     myActors={props.myActors}
+                                    getWatched={props.getWatched}
                                 />
                             ))}
 
