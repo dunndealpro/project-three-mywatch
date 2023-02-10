@@ -173,7 +173,7 @@ async function addToMyWatch(req, res) {
 
   if (req.body.mwMediaType == "movie" || req.body.mwMediaType == "tv") {
     if (req.body.mwHaveSeen) {
-      console.log("userwatched: ", user.watched.includes(myWatchItem));
+      console.log("userwatched: ", user.watched.includes(myWatchItem._id));
       if (!user.watched.includes(myWatchItem._id)) {
         user.watched.push(myWatch._id);
         if (user.notWatched.includes(myWatchItem._id)) {
@@ -182,7 +182,7 @@ async function addToMyWatch(req, res) {
         }
       }
     } else {
-      console.log("userNOTwatched: ", user._id);
+      console.log("userNOTwatched: ", user.notWatched.includes(myWatchItem._id));
       if (!user.notWatched.includes(myWatchItem._id)) {
         user.notWatched.push(myWatch._id);
         if (user.watched.includes(myWatchItem._id)) {

@@ -128,10 +128,7 @@ export default function DetailModal(props) {
                 <Modal.Title id="contained-modal-title-vcenter">
                     <span className='fs-2'>
                         {title}
-                    </span>  &nbsp;&nbsp;
-                    
-
-                    
+                    </span>  &nbsp;&nbsp;                
                         <span className='fs-4 fw-light'>
                             {releaseDisplay}
                         </span>

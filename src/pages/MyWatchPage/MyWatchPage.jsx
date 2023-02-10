@@ -51,6 +51,10 @@ export default function MyWatchPage(props) {
                                     seenBoolean={true}
                                     user={props.user}
                                     comments = {w.comments}
+                                    display = {"I have seen this movie"}
+                                    watched={props.watched}
+                                    notWatched={props.notWatched}
+                                    myActors={props.myActors}
                                 />
                             ))}
                         </Row>
@@ -70,6 +74,10 @@ export default function MyWatchPage(props) {
                                     seenBoolean={false}
                                     user={props.user}
                                     comments = {w.comments}
+                                    display = {"I have not seen this movie"}
+                                    watched={props.watched}
+                                    notWatched={props.notWatched}
+                                    myActors={props.myActors}
                                 />
                             ))}
 
@@ -89,6 +97,9 @@ export default function MyWatchPage(props) {
                                     handleAddToMyWatch={props.handleAddToMyWatch}
                                     user={props.user}
                                     comments = {w.comments}
+                                    watched={props.watched}
+                                    notWatched={props.notWatched}
+                                    myActors={props.myActors}
                                 />
                             ))}
 

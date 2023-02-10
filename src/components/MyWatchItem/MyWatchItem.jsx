@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react';
 import DetailModal from '../DetailModal/DetailModal';
 import * as myWatchAPI from "../../utilities/myWatch-api"
+import SeenOnlySwitch from '../SeenOnlySwitch/SeenOnlySwitch';
 
 
 export default function WatchedItem(props) {
@@ -17,6 +18,7 @@ export default function WatchedItem(props) {
     const [watchedCredits, setWatchedCredits] = useState([])
     const [modalShow, setModalShow] = useState(false);
     // const [displayComments, setDisplayComments] = useState([])
+    let display 
 
     let itemImg
     let title = watchedDetails.name || watchedDetails.title
@@ -30,7 +32,7 @@ export default function WatchedItem(props) {
 
 
     // let mediaType = props.mediaType
-    // console.log(mediaType)
+    console.log(props.tmdBid.mediaType)
 
     async function getInfo() {
         if (props.mediaType === "movie") {
@@ -54,7 +56,7 @@ export default function WatchedItem(props) {
             // setDisplayComments(displayCommentsTemp)
             setWatchedDetails(watchedDetailsTemp)
             setWatchedCredits(watchedCreditsTemp)
-            
+
         } else if (props.mediaType === "person") {
             let watchedDetailsUrl = `https://api.themoviedb.org/3/person/${props.tmdBid}?api_key=${API_KEY}&language=en-US`
             let watchedCreditsUrl = `https://api.themoviedb.org/3/person/${props.tmdBid}/combined_credits?api_key=${API_KEY}&language=en-US`
@@ -65,23 +67,25 @@ export default function WatchedItem(props) {
             // setDisplayComments(displayCommentsTemp)
             setWatchedDetails(watchedDetailsTemp)
             setWatchedCredits(watchedCreditsTemp)
-            
+
         }
+        
     }
 
-    async function deleteFromMyWatch(e){
+    async function deleteFromMyWatch(e) {
         console.log("remove clicked", props.tmdBid)
 
-        const myWatchToBeDeleted =  await myWatchAPI.deleteFromMyWatch(props.tmdBid)
+        const myWatchToBeDeleted = await myWatchAPI.deleteFromMyWatch(props.tmdBid)
     }
 
     useEffect(() => {
         console.log("useEffect?")
-        getInfo()
         
+        getInfo()
+
     }, []);
 
-   
+
 
     // console.log(watchedDetails.backdrop_path)
     // console.log(watchedDetails.backdrop_path || watchedDetails.profile_path)
@@ -92,7 +96,9 @@ export default function WatchedItem(props) {
 
     let myWatchComments
 
-   
+
+    console.log("display ", props.seenBoolean, display)
+
 
     return (
         <>
@@ -101,8 +107,14 @@ export default function WatchedItem(props) {
                 <Card.Img className="rounded" variant="none" src={itemImg} />
                 <Button className="m-2" variant="primary" onClick={() => setModalShow(true)}>Details</Button>
                 <Button className='m-2' variant='danger' onClick={e => deleteFromMyWatch(e)}>Remove From MyWatch</Button>
+                <SeenOnlySwitch
+                    seenBoolean={props.seenBoolean}
+                    watchedDetails={watchedDetails}
+                    display={props.display}
+                    handleAddToMyWatch={props.handleAddToMyWatch}
+                    mediaType={props.mediaType}
+                />
                 <DetailModal
-                   
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                     watchedDetails={watchedDetails}
