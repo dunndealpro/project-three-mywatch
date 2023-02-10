@@ -16,7 +16,7 @@ export default function SearchBox(props) {
 
     return (
         <>
-        <div className='mt-5'>
+        <div className='p-5'>
         <h1>
             Search for Movie, Show or Actor
         </h1>

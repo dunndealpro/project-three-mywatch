@@ -30,7 +30,7 @@ export default function MyWatchPage(props) {
     // }
 
     return (
-        <div className="text-center">
+        <div className="text-center bg-light rounded pt-5 mt-5">
             <h1>MyWatch Page</h1>
             <Container className="bg-light rounded p-3 text-center">
                 <Tabs variant="pills"

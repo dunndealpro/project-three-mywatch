@@ -23,7 +23,7 @@ export default function LandingPage(props) {
 
     return (
         <>
-            <Container className='bg-light fluid'>
+            <Container className='bg-light fluid w-75 pt-5 pb-2 mt-5 position-relative' >
                 <div className='fs-1 text-center'>Welcome To MyWatch!</div>
                 <div className='fs-3 text-center'>(witty comment goes here)</div>
                 <Container className='text-center'>
@@ -44,7 +44,7 @@ export default function LandingPage(props) {
 
                 </Container>
 
-                <SearchBox
+                {/* <SearchBox
                     setSearch={props.setSearch}
                     search={props.search}
                     getSearch={props.getSearch}
@@ -56,7 +56,7 @@ export default function LandingPage(props) {
                     watched={props.watched}
                     notWatched={props.notWatched}
                     myActors={props.myActors}
-                    />
+                    /> */}
 
             </Container>
         </>

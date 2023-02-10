@@ -5,7 +5,8 @@ import { useState, useEffect } from "react"
 import { Routes, Route, useResolvedPath } from 'react-router-dom'
 
 import { getUser } from '../../utilities/users-service';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle';
 import AuthPage from '../AuthPage/AuthPage';
 import LandingPage from '../LandingPage/LandingPage';
 import MyWatchPage from '../MyWatchPage/MyWatchPage';
@@ -64,7 +65,7 @@ export default function App() {
       console.log("Error!!>!>!")
       console.error(error);
     }
-    getWatched()
+    // getWatched()
     // console.log(search)
     // console.log(mwSearch)
   }
@@ -78,8 +79,6 @@ export default function App() {
     setNotWatched(watchedtemp.notWatched)
     setWatched(watchedtemp.watched)
     setMyActors(watchedtemp.myActors)
-
-
   }
 
   async function handleAddToMyWatch(mwID, mwName, mwMediaType, mwTitle, MWHaveSeen) {
@@ -102,6 +101,17 @@ export default function App() {
     // handleAddToMyWatch()
     console.log(watched)
     // getWatched() 
+    // async function getWatched() {
+    //   console.log("Get Watched")
+    //   let watchedtemp = await myWatchAPI.getWatched()
+    //   console.log(watchedtemp.watched)
+    //   console.log(watchedtemp.notWatched)
+    //   console.log(watchedtemp.myActors)
+    //   setNotWatched(watchedtemp.notWatched)
+    //   setWatched(watchedtemp.watched)
+    //   setMyActors(watchedtemp.myActors)
+    // }
+    // getWatched();
 
   }, [])
 
@@ -114,7 +124,7 @@ export default function App() {
     <main className='App'>
       {user ?
         <>
-          <NavBar user={user} setUser={setUser} />
+          {/* <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/" element={<LandingPage
               landingPoster={landingPoster}
@@ -140,8 +150,63 @@ export default function App() {
               user={user}
 
 
-            />} />
-          </Routes>
+            />} /> */}
+          <div className='fixed-top'>
+            <NavBar user={user} setUser={setUser} />
+          </div>
+          <div
+            data-bs-spy="scroll"
+            data-bs-target="navbar"
+            // data-bs-root-margin="0px 0px -40%"
+            data-bs-smooth-scroll="true"
+            data-offset="150"
+            data-bs-offset="140"
+            className="scrollspy-navbar bg-dark p-3 rounded-2 "
+            tabIndex="0">
+            <div id="home" className='p-2' height="25%">
+              <LandingPage
+                landingPoster={landingPoster}
+                search={search}
+                setSearch={setSearch}
+                getSearch={getSearch}
+                searchResults={searchResults}
+                handleAddToMyWatch={handleAddToMyWatch}
+                // mwSearch={mwSearch}
+                watched={watched}
+                notWatched={notWatched}
+                myActors={myActors}
+
+              // getLandingPoster={getLandingPoster}
+              />
+            </div>
+            <hr></hr>
+            <div id='mywatch' height="25%">
+              <MyWatchPage
+                getWatched={getWatched}
+                watched={watched}
+                notWatched={notWatched}
+                myActors={myActors}
+                handleAddToMyWatch={handleAddToMyWatch}
+                user={user}
+              />
+            </div>
+            <hr></hr>
+            <div id="search" height="25%">
+              <SearchPage
+                landingPoster={landingPoster}
+                search={search}
+                setSearch={setSearch}
+                getSearch={getSearch}
+                searchResults={searchResults}
+                handleAddToMyWatch={handleAddToMyWatch}
+                // mwSearch={mwSearch}
+                watched={watched}
+                notWatched={notWatched}
+                myActors={myActors}
+              />
+            </div>
+          </div>
+          {/* </Routes> */}
 
         </>
 
