@@ -30,13 +30,15 @@ export default function MyWatchPage(props) {
     // }
 
     return (
-        <div className="text-center bg-light rounded pt-5 mt-5 fs-4">
-            {/* <h1>MyWatch Page</h1> */}
-            <Container className="bg-light rounded p-3 text-center">
+        <div className="text-center rounded  fs-4">
+            
+            <Container  className=" rounded p-2 text-center" style={{background: 'rgba(250,232,216,1)'}}>
+                <h1 className="p-2 ">MyWatch Page</h1>
                 <Tabs variant="pills"
                     defaultActiveKey="watchedItems"
                     id="fill-tab-example"
-                    className="mb-3 bg-dark p-2 rounded"
+                    className="mb-3 p-3 rounded"
+                    
                     fill
                     
                 >

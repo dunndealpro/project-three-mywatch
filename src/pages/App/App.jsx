@@ -11,8 +11,10 @@ import AuthPage from '../AuthPage/AuthPage';
 import LandingPage from '../LandingPage/LandingPage';
 import MyWatchPage from '../MyWatchPage/MyWatchPage';
 import SearchPage from '../SearchPage/SearchPage';
-
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 import NavBar from '../../components/NavBar/NavBar';
+import Container from 'react-bootstrap/Container'
 
 import * as myWatchAPI from "../../utilities/myWatch-api"
 
@@ -123,6 +125,8 @@ export default function App() {
 
   return (
     <main className='App'>
+      {/* <Container> */}
+
       {user ?
         <>
           {/* <NavBar user={user} setUser={setUser} />
@@ -152,19 +156,26 @@ export default function App() {
 
 
             />} /> */}
-          <div className='fixed-top'>
+            {/* <div> */}
+          <div className='sticky-top'>
+            {/* <Row> */}
             <NavBar user={user} setUser={setUser} />
+
+            {/* </Row> */}
           </div>
+          
+          {/* <Row> */}
           <div
             data-bs-spy="scroll"
             data-bs-target="navbar"
             // data-bs-root-margin="0px 0px -40%"
             data-bs-smooth-scroll="true"
             // data-offset="150"
-            // data-bs-offset="140"
-            className="scrollspy-navbar bg-dark p-3 rounded-2 "
+            data-bs-offset="140px"
+            className="scrollspy-navbar position-relative"
             tabIndex="0">
-            <div id="home" className='p-2' height="25%">
+            <div id="home" className=''>
+           
               <LandingPage
                 landingPoster={landingPoster}
                 search={search}
@@ -178,18 +189,7 @@ export default function App() {
                 myActors={myActors}
 
               // getLandingPoster={getLandingPoster}
-              />
-            </div>
-            <hr></hr>
-            <div id='mywatch' height="25%">
-              <MyWatchPage
-                getWatched={getWatched}
-                watched={watched}
-                notWatched={notWatched}
-                myActors={myActors}
-                handleAddToMyWatch={handleAddToMyWatch}
-                user={user}
-              />
+              />             
             </div>
             <hr></hr>
             <div id="search" height="25%">
@@ -206,14 +206,27 @@ export default function App() {
                 myActors={myActors}
               />
             </div>
+            <hr></hr>
+            <div id='mywatch' height="25%">
+              <MyWatchPage
+                getWatched={getWatched}
+                watched={watched}
+                notWatched={notWatched}
+                myActors={myActors}
+                handleAddToMyWatch={handleAddToMyWatch}
+                user={user}
+              />
+            </div>
+           
           </div>
           {/* </Routes> */}
-
+          {/* </Row> */}
         </>
 
         :
         <AuthPage setUser={setUser} />
       }
+      {/* </Container> */}
     </main>
   );
 }

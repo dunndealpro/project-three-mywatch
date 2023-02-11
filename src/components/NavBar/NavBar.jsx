@@ -20,34 +20,32 @@ export default function NavBar({ user, setUser }) {
 let navimg = "/home/dunndeal/code/project-three-mywatchlist/popcorn-icon.png"
 
   return (
-    <div className="">
+    <div className="fs-5 bg-secondary align-center" >
 
-    <Navbar collapseOnSelect expand="md" id="navbar" className="p-2 fs-5 bg-light">
-      <Navbar.Brand className="fs-5 ms-2  align-top" href="/">
+    <Navbar className="p-2" collapseOnSelect expand="md" id="navbar" sticky="top" bg="light" variant="light">
+      <Navbar.Brand className=" " href="/">
         
         <img
               src={require('/home/dunndeal/code/project-three-mywatchlist/src/components/NavBar/popcorn-icon.png')}
-              width="45"
-              height="45"
-              className="d-inline-block align-top"
+              width="50"
+              height="50"
+              // className="d-inline-block align-top"
               alt="Popcorn Icon"
             />
 
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav variant="pills" className="me-auto" defaultActiveKey="/">
-        <Nav.Item>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" className="ms-2 " />
+
+      <Navbar.Collapse className=" " id="basic-navbar-nav " >
+        <Nav variant="pills" className="mx-auto " defaultActiveKey="/">
+        <Nav.Item className=" position-relative center ">
             <Nav.Link href="#home">Home</Nav.Link> &nbsp;&nbsp;
-
           </Nav.Item>
-          <Nav.Item>
+          <Nav.Item className=''>
             <Nav.Link href="#mywatch">MyWatch</Nav.Link> &nbsp;&nbsp;
-
           </Nav.Item>
-          <Nav.Item>
+          <Nav.Item className=''>
             <Nav.Link href="#search">Search</Nav.Link>&nbsp;&nbsp;
-
           </Nav.Item>
         <NavDropdown className="position-absolute end-0 me-3" title={title} id="basic-nav-dropdown">
           <NavDropdown.Item onClick={handleLogOut} href="">Logout</NavDropdown.Item>

@@ -16,21 +16,21 @@ export default function SearchBox(props) {
 
     return (
         <>
-        <div className='p-5'>
+        <div className='text-center p-2'>
         <h1>
             Search for Movie, Show or Actor
         </h1>
-            <Container className="m-2">
+            <Container className=" text-center">
                 <Row className='text-center'>
                     <Col className="text-center">
-                        <Form.Group className="mb-3" >
-                            <Form.Control value={props.search} type="text" onChange={onChangeHandler} />
+                        <Form.Group className="" >
+                            <Form.Control className="text-center" value={props.search} type="text" onChange={onChangeHandler} />
                         </Form.Group>
                     </Col>
 
-                    <Col xs lg="2">
-                        <div className="col justify-left">
-                            <Button onClick={props.getSearch} className="">Submit</Button>
+                    <Col  lg="2">
+                        <div className="col m-2 justify-left">
+                            <Button size="sm" onClick={props.getSearch} className="">Search</Button>
                         </div>
 
                     </Col>

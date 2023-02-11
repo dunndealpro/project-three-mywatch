@@ -1,5 +1,6 @@
 import Carousel from 'react-bootstrap/Carousel';
 import TrendingSummaryText from '../TrendingSummaryText/TrendingSummaryText';
+import Container from 'react-bootstrap/Container'
 
 export default function LandingPoster(props) {
     // let trending1Url
@@ -30,8 +31,9 @@ console.log()
             <div className="rounded">
                 <img width="100%" src={trendingUrl} alt="" />
                 <Carousel.Caption>
-                    <div className="rounded-2 bg-dark m-2 p-2 d-block w-100">
-                    <h3>{trendingTitle}</h3>
+                    <Container className='w-100' fluid width-35>
+                    <div className=" m-auto p-2" style={{backgroundColor: 'rgba(0,0,0,.5)'}}>
+                    <h3 className='fs-4'>{trendingTitle}</h3>
                     <TrendingSummaryText 
                     posterUrl={props.posterUrl}
                     trendingOverview = {trendingOverview}
@@ -39,6 +41,8 @@ console.log()
                     />
                     
                     </div>
+                        
+                    </Container>
                 </Carousel.Caption>
 
             </div>
