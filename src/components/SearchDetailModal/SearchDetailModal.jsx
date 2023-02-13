@@ -184,7 +184,7 @@ export default function SearchDetailModal(props) {
             <Modal.Body className="show-grid">
                 <Container >
                     <Row>
-                        <Col  className="text-center">
+                        <Col  className="text-center m-2">
                             <Image fluid className="rounded" src={img} width={250} />
                             {isInMyWatched || isInMyNotWatched || isInMyActors &&
                                 <Form  >
@@ -203,7 +203,7 @@ export default function SearchDetailModal(props) {
                             />
                         </Col>
                         <Col>
-                            <Accordion defaultActiveKey="1">
+                            <Accordion defaultActiveKey="">
                                 <Accordion.Item eventKey="0">
                                     <Accordion.Header>Summary</Accordion.Header>
                                     <Accordion.Body className="accordionCustom">

@@ -28,10 +28,10 @@ export default function CommentCard(props) {
 
     return (
         <>
-            <Container>
+            {/* <Container> */}
 
                 <div>
-                    <Card>
+                    <Card className='m-1'>
                         <Card.Body>
 
                             <Card.Text className='fs-5'>
@@ -48,7 +48,7 @@ export default function CommentCard(props) {
                     </Card>
                 </div>
 
-            </Container>
+            {/* </Container> */}
         </>
     )
 }

@@ -146,12 +146,14 @@ export default function SeenOnlySwitch(props) {
     //         console.log(display)
     //     }
 
-    // console.log(mwMediaType)
+    console.log(mwMediaType)
+
+    
 
     return (
         <>
             {/* <Button className="btn-sm" onClick={() => props.handleAddToMyWatch(mwID, mwName, mwMediaType, mwTitle, mwHaveSeen)}>Add to MyWatch </Button> */}
-            {mwMediaType !== "person" &&
+            {mwMediaTypeMw !== "person" &&
                 <>
                     <Form.Check
                         checked={seen}

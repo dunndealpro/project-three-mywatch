@@ -117,13 +117,13 @@ export default function SeenSwitch(props) {
 
     return (
         <>
-            <Container className='p-2'>
+            <Container className='m-3'>
                 {mwMediaType !== "person" &&
                     <>
                         <Row>
-                            <Col md={12} className='rounded '>
+                            <Col  className='rounded '>
                                 <Form.Check
-                                    className='ms-4 me-5'
+                                    className='ms-4'
                                     onChange={e => handleChange(e)}
                                     type="switch"
                                     id="custom-switch"
@@ -138,16 +138,17 @@ export default function SeenSwitch(props) {
                             </Col>
 
                         </Row>
+                </>
+                }
+                            </Container>
                         <Row>
                             <Button 
                             style={{backgroundColor: 'rgb(43, 112, 168)', borderColor: 'rgb(43, 112, 168)'}} 
-                            className="btn-sm m-2" onClick={() => props.handleAddToMyWatch(mwID, mwName, mwMediaType, mwTitle, mwHaveSeen)}>Add to MyWatch </Button>
+                            className=" btn-sm" onClick={() => props.handleAddToMyWatch(mwID, mwName, mwMediaType, mwTitle, mwHaveSeen)}>Add to MyWatch </Button>
 
                         </Row>
-                    </>
-                }
+                
 
-            </Container>
         </>
 
     )
