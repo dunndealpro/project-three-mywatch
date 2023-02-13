@@ -1,8 +1,21 @@
 import Carousel from 'react-bootstrap/Carousel';
 import TrendingSummaryText from '../TrendingSummaryText/TrendingSummaryText';
 import Container from 'react-bootstrap/Container'
+import SeenSwitch from '../SeenSwitch/SeenSwitch';
+import TrendingDetailModal from '../TrendingDetailModal/TrendingDetailModal';
+import { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+
+
 
 export default function LandingPoster(props) {
+
+    const [modalShow, setModalShow] = useState(false);
+    const [searchedDetails, setSearchedDetails] = useState([])
+    const [searchedCredits, setSearchedCredits] = useState([])
+
+    const API_KEY = "a72c1d466153d06b65f2879b369031d8"
+
     // let trending1Url
 
     // console.log("test  ", props.posterUrl.backdrop_path)
@@ -11,15 +24,59 @@ export default function LandingPoster(props) {
     let trendingOverview = props.posterUrl.overview
 
 
-if (props.posterUrl.title){
-    trendingTitle= props.posterUrl.title
-}else{
-    trendingTitle=props.posterUrl.name
-}
+    if (props.posterUrl.title) {
+        trendingTitle = props.posterUrl.title
+    } else {
+        trendingTitle = props.posterUrl.name
+    }
 
-console.log()
+    console.log()
 
+    async function getSearchInfo() {
+        if (props.result.media_type === "movie") {
+            console.log("Test")
+            let searchedDetailsUrl = `https://api.themoviedb.org/3/movie/${props.result.id}?api_key=${API_KEY}&language=en-US`
+            let searchedCreditsUrl = `https://api.themoviedb.org/3/movie/${props.result.id}/credits?api_key=${API_KEY}&language=en-US`
 
+            let searchedDetailsTemp = await fetch(searchedDetailsUrl).then(res => res.json())
+            let searchedCreditsTemp = await fetch(searchedCreditsUrl).then(res => res.json())
+            // let displayCommentsTemp = await myWatchAPI.getComments(props.result.id)
+            setSearchedDetails(searchedDetailsTemp)
+            setSearchedCredits(searchedCreditsTemp)
+            // setDisplayComments(displayCommentsTemp)
+        }
+        else if (props.result.media_type === "tv") {
+            console.log("Test")
+            let searchedDetailsUrl = `https://api.themoviedb.org/3/tv/${props.result.id}?api_key=${API_KEY}&language=en-US`
+            let searchedCreditsUrl = `https://api.themoviedb.org/3/tv/${props.result.id}/credits?api_key=${API_KEY}&language=en-US`
+
+            let searchedDetailsTemp = await fetch(searchedDetailsUrl).then(res => res.json())
+            let searchedCreditsTemp = await fetch(searchedCreditsUrl).then(res => res.json())
+            // let displayCommentsTemp = await myWatchAPI.getComments(props.result.id)
+            // setDisplayComments(displayCommentsTemp)
+            setSearchedDetails(searchedDetailsTemp)
+            setSearchedCredits(searchedCreditsTemp)
+
+        } else if (props.result.media_type === "person") {
+            console.log("Test")
+            let searchedDetailsUrl = `https://api.themoviedb.org/3/person/${props.result.id}?api_key=${API_KEY}&language=en-US`
+            let searchedCreditsUrl = `https://api.themoviedb.org/3/person/${props.result.id}/combined_credits?api_key=${API_KEY}&language=en-US`
+
+            let searchedDetailsTemp = await fetch(searchedDetailsUrl).then(res => res.json())
+            let searchedCreditsTemp = await fetch(searchedCreditsUrl).then(res => res.json())
+            // let displayCommentsTemp = await myWatchAPI.getComments(props.result.id)
+            // setDisplayComments(displayCommentsTemp)
+            setSearchedDetails(searchedDetailsTemp)
+            setSearchedCredits(searchedCreditsTemp)
+
+        }
+
+    }
+    useEffect(() => {
+        console.log("useEffect? search")
+        getSearchInfo()
+
+    }, []);
 
     // if (props.landingPoster) {
     //     console.log("response: ", props.landingPoster.results[0].poster_path)
@@ -31,18 +88,37 @@ console.log()
             <div className="rounded">
                 <img width="100%" src={trendingUrl} alt="" />
                 <Carousel.Caption>
-                    <Container className='w-100' fluid width-35>
-                    <div className=" m-auto p-2" style={{backgroundColor: 'rgba(0,0,0,.5)'}}>
-                    <h3 className='fs-4'>{trendingTitle}</h3>
-                    <TrendingSummaryText 
-                    posterUrl={props.posterUrl}
-                    trendingOverview = {trendingOverview}
-                    handleAddToMyWatch = {props.handleAddToMyWatch}
-                    />
-                    
-                    </div>
-                        
+                    <Container>
+                        <div className="" >
+                            {/* <h3 className='fs-5'></h3> */}
+
+                            {/* <TrendingSummaryText
+                                posterUrl={props.posterUrl}
+                                trendingOverview={trendingOverview}
+                                handleAddToMyWatch={props.handleAddToMyWatch}
+                            /> */}
+                            <Button style={{backgroundColor: 'rgba(0,0,0,.5)', borderColor: 'black'} }  className="m-2 fs-6" variant="primary" onClick={() => setModalShow(true)}>{trendingTitle}</Button>
+                            <TrendingDetailModal
+                                show={modalShow}
+                                onHide={() => setModalShow(false)}
+                                handleAddToMyWatch={props.handleAddToMyWatch}
+                                seenBoolean={props.seenBoolean}
+                                user={props.user}
+                                watched={props.watched}
+                                notWatched={props.notWatched}
+                                myActors={props.myActors}
+                                searchedDetails={searchedDetails}
+                                searchedCredits={searchedCredits}
+                                result={props.posterUrl}
+                                mediaType={props.mediaType}
+
+
+                            />
+
+                        </div>
+
                     </Container>
+
                 </Carousel.Caption>
 
             </div>

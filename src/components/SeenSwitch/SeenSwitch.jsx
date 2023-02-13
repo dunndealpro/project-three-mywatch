@@ -66,9 +66,9 @@ export default function SeenSwitch(props) {
         mwName = props.cast.name
         mwID = props.cast.id
         console.log(mwID)
-    console.log(mwName)
-    console.log(mwTitle)
-    console.log(mwMediaType)
+        console.log(mwName)
+        console.log(mwTitle)
+        console.log(mwMediaType)
     }
 
     const handleChange = (e) => {
@@ -102,9 +102,9 @@ export default function SeenSwitch(props) {
         // console.log()
 
         console.log(mwID)
-    console.log(mwName)
-    console.log(mwTitle)
-    console.log(mwMediaType)
+        console.log(mwName)
+        console.log(mwTitle)
+        console.log(mwMediaType)
     }
 
     console.log(mwID)
@@ -117,19 +117,37 @@ export default function SeenSwitch(props) {
 
     return (
         <>
-            <Button className="btn-sm" onClick={() => props.handleAddToMyWatch(mwID, mwName, mwMediaType, mwTitle, mwHaveSeen)}>Add to MyWatch </Button>
-            {mwMediaType !== "person" &&
-                <>
-                    <Form.Check
-                        onChange={e => handleChange(e)}
-                        type="switch"
-                        id="custom-switch"
-                    />
+            <Container className='p-2'>
+                {mwMediaType !== "person" &&
+                    <>
+                        <Row>
+                            <Col md={12} className='rounded '>
+                                <Form.Check
+                                    className='ms-4 me-5'
+                                    onChange={e => handleChange(e)}
+                                    type="switch"
+                                    id="custom-switch"
+                                    // reverse
+                                // label={display}
+                                // style={{}}
+                                />
+                            </Col>
+                            <Col>
 
+                                <Form.Check.Label>{display}</Form.Check.Label>
+                            </Col>
 
-                    <Form.Check.Label>{display}</Form.Check.Label>
-                </>
-            }
+                        </Row>
+                        <Row>
+                            <Button 
+                            style={{backgroundColor: 'rgb(43, 112, 168)', borderColor: 'rgb(43, 112, 168)'}} 
+                            className="btn-sm m-2" onClick={() => props.handleAddToMyWatch(mwID, mwName, mwMediaType, mwTitle, mwHaveSeen)}>Add to MyWatch </Button>
+
+                        </Row>
+                    </>
+                }
+
+            </Container>
         </>
 
     )

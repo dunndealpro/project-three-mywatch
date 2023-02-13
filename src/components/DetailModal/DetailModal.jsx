@@ -111,9 +111,9 @@ export default function DetailModal(props) {
     // console.log(props.comments)
     // console.log(...props)
 
-    let releaseDisplay 
+    let releaseDisplay
 
-    if (mediaType == "Movie" || mediaType == "Television"){
+    if (mediaType == "Movie" || mediaType == "Television") {
         releaseDisplay = mediaType + " - " + release
         console.log(releaseDisplay)
     }
@@ -129,11 +129,11 @@ export default function DetailModal(props) {
                 <Modal.Title id="contained-modal-title-vcenter">
                     <span className='fs-2'>
                         {title}
-                    </span>  &nbsp;&nbsp;                
-                        <span className='fs-4 fw-light'>
-                            {releaseDisplay}
-                        </span>
-                       
+                    </span>  &nbsp;&nbsp;
+                    <span className='fs-4 fw-light'>
+                        {releaseDisplay}
+                    </span>
+
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body className="show-grid">
@@ -146,13 +146,15 @@ export default function DetailModal(props) {
                                 <Form.Group className="mb-3" controlId="userComment">
                                     <Form.Control className="m-3" as="textarea" rows={3} type="text" value={comment} placeholder="Enter Comment" onChange={handleChange} />
                                 </Form.Group>
-                                <Button onClick={e => handleAddComment(e)} variant="primary" >
+                                <Button
+                                    style={{ backgroundColor: 'rgb(43, 112, 168)', borderColor: 'rgb(43, 112, 168)' }}
+                                    onClick={e => handleAddComment(e)} variant="primary" >
                                     Submit
                                 </Button>
                             </Form>
                         </Col>
                         <Col>
-                            <Accordion defaultActiveKey="0">
+                            <Accordion className='mt-2' defaultActiveKey="0">
                                 <Accordion.Item eventKey="0">
                                     <Accordion.Header>Summary</Accordion.Header>
                                     <Accordion.Body className="accordionCustom">
@@ -195,7 +197,9 @@ export default function DetailModal(props) {
                 </Container>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
+                <Button
+                    style={{ backgroundColor: 'rgb(43, 112, 168)', borderColor: 'rgb(43, 112, 168)' }}
+                    onClick={props.onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
     );

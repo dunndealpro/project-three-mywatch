@@ -16,22 +16,24 @@ export default function SearchBox(props) {
 
     return (
         <>
-        <div className='text-center p-2'>
+        <div className='p-2'>
         <h1>
             Search for Movie, Show or Actor
         </h1>
-            <Container className=" text-center">
+
+        </div>
+            <Container fluid className=" text-center">
                 <Row className='text-center'>
-                    <Col className="text-center">
+                    <Col sm={10} className="p-2 text-center">
                         <Form.Group className="" >
                             <Form.Control className="text-center" value={props.search} type="text" onChange={onChangeHandler} />
                         </Form.Group>
                     </Col>
 
-                    <Col  lg="2">
-                        <div className="col m-2 justify-left">
-                            <Button size="sm" onClick={props.getSearch} className="">Search</Button>
-                        </div>
+                    <Col  sm={2} className="p-2" >
+                        {/* <div className="col m-2 justify-left"> */}
+                            <Button style={{backgroundColor: 'rgb(43, 112, 168)', borderColor: 'rgb(43, 112, 168)'}} onClick={props.getSearch} className="">Search</Button>
+                        {/* </div> */}
 
                     </Col>
 
@@ -39,8 +41,6 @@ export default function SearchBox(props) {
 
 
             </Container>
-
-        </div>
         </>
     )
 }

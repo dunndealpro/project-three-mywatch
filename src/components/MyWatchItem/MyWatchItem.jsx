@@ -106,8 +106,8 @@ export default function WatchedItem(props) {
             <Card className="m-2" style={{ width: '18rem' }}>
                 <Card.Title className="m-2 fw-bold">{title}</Card.Title>
                 <Card.Img className="rounded" variant="none" src={itemImg} />
-                <Button className="m-2" variant="primary" onClick={() => setModalShow(true)}>Details</Button>
-                <Button className='m-2' variant='danger' onClick={e => deleteFromMyWatch(e)}>Remove From MyWatch</Button>
+                <Button style={{backgroundColor: 'rgb(43, 112, 168)', borderColor: 'rgb(43, 112, 168)'}} className="m-2"  onClick={() => setModalShow(true)}>Details</Button>
+                <Button className='m-2' style={{backgroundColor: 'rgb(206, 53, 54)', borderColor: 'rgb(206, 53, 54)'}} onClick={e => deleteFromMyWatch(e)}>Remove From MyWatch</Button>
                 <SeenOnlySwitch
                     seenBoolean={props.seenBoolean}
                     watchedDetails={watchedDetails}

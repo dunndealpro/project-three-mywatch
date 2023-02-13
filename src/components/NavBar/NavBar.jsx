@@ -42,7 +42,7 @@ let navimg = "/home/dunndeal/code/project-three-mywatchlist/popcorn-icon.png"
             <Nav.Link href="#home">Home</Nav.Link> &nbsp;&nbsp;
           </Nav.Item>
           <Nav.Item className=''>
-            <Nav.Link href="#mywatch">MyWatch</Nav.Link> &nbsp;&nbsp;
+            <Nav.Link href="#mywatch">myWatch</Nav.Link> &nbsp;&nbsp;
           </Nav.Item>
           <Nav.Item className=''>
             <Nav.Link href="#search">Search</Nav.Link>&nbsp;&nbsp;

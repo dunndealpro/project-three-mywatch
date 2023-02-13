@@ -184,8 +184,8 @@ export default function SearchDetailModal(props) {
             <Modal.Body className="show-grid">
                 <Container >
                     <Row>
-                        <Col  className="text-center">
-                            <Image fluid className="rounded" src={img} width={250} />
+                        <Col className="text-center">
+                            <Image className="rounded" src={img} width={250} />
                             {isInMyWatched || isInMyNotWatched || isInMyActors &&
                                 <Form  >
                                     <Form.Group className="mb-3" controlId="userComment">
@@ -195,7 +195,37 @@ export default function SearchDetailModal(props) {
                                         Submit
                                     </Button>
                                 </Form>
-                            }                           
+                            }
+                            {/* {  isInMyWatched &&
+                            <Form  >
+                                <Form.Group className="mb-3" controlId="userComment">
+                                    <Form.Control className="m-3" as="textarea" rows={3} type="text" value={comment} placeholder="Enter Comment" onChange={handleChange} />
+                                </Form.Group>
+                                <Button onClick={e => handleAddComment(e)} variant="primary" >
+                                    Submit
+                                </Button>
+                            </Form>
+                }
+                {  isInMyNotWatched  &&
+                            <Form  >
+                                <Form.Group className="mb-3" controlId="userComment">
+                                    <Form.Control className="m-3" as="textarea" rows={3} type="text" value={comment} placeholder="Enter Comment" onChange={handleChange} />
+                                </Form.Group>
+                                <Button onClick={e => handleAddComment(e)} variant="primary" >
+                                    Submit
+                                </Button>
+                            </Form>
+                }
+                {  isInMyActors  &&
+                            <Form  >
+                                <Form.Group className="mb-3" controlId="userComment">
+                                    <Form.Control className="m-3" as="textarea" rows={3} type="text" value={comment} placeholder="Enter Comment" onChange={handleChange} />
+                                </Form.Group>
+                                <Button onClick={e => handleAddComment(e)} variant="primary" >
+                                    Submit
+                                </Button>
+                            </Form>
+                } */}
                             <SeenSwitch 
                             handleAddToMyWatch={props.handleAddToMyWatch}
                             searchedDetails={props.searchedDetails}
@@ -203,7 +233,7 @@ export default function SearchDetailModal(props) {
                             />
                         </Col>
                         <Col>
-                            <Accordion defaultActiveKey="1">
+                            <Accordion defaultActiveKey="0">
                                 <Accordion.Item eventKey="0">
                                     <Accordion.Header>Summary</Accordion.Header>
                                     <Accordion.Body className="accordionCustom">
@@ -237,6 +267,7 @@ export default function SearchDetailModal(props) {
                                                     comment={comment}
                                                 />
                                             ))}
+
                                         </Accordion.Body>
                                     </Accordion.Item>
                                 }

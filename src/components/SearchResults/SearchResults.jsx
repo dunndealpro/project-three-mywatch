@@ -18,8 +18,8 @@ export default function SearchResults(props) {
                         <h1>Search Results</h1>
 
                     </div>
-                    <Container>
-                        <Row>
+                    <Container fluid className='text-center'>
+                        <Row fluid className="justify-content-center">
                             {props.searchResults.results && props.searchResults.results.map((result) => (
                                 // <SearchResult
                                 //     key={result.id}

@@ -6,9 +6,9 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button';
-import { useEffect, useState } from 'react';
 import SearchDetailModal from '../SearchDetailModal/SearchDetailModal';
 import * as myWatchAPI from "../../utilities/myWatch-api"
+import { useEffect, useState } from 'react';
 
 
 export default function SearchItem(props) {
@@ -110,7 +110,9 @@ console.log(mwSearch)
             <Card className="m-2" style={{ width: '18rem' }}>
                 <Card.Title className="m-2 fw-bold">{title}</Card.Title>
                 <Card.Img className="rounded" variant="none" src={itemImg} />
-                <Button className="m-2" variant="primary" onClick={() => setModalShow(true)}>Details</Button>
+                <Button 
+                style={{backgroundColor: 'rgb(43, 112, 168)', borderColor: 'rgb(43, 112, 168)'}} 
+                className="m-2" variant="primary" onClick={() => setModalShow(true)}>Details</Button>
                 {/* <Button className='m-2' variant='danger' onClick={e => deleteFromMyWatch(e)}>Remove From MyWatch</Button> */}
                 <SearchDetailModal
                    
