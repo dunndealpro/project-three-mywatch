@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/project-three-mywatch/static/css/main.a3d3528d.css",
+    "main.js": "/project-three-mywatch/static/js/main.eb614833.js",
+    "static/media/popcorn-icon.png": "/project-three-mywatch/static/media/popcorn-icon.251c98b2ee637a29d774.png",
+    "index.html": "/project-three-mywatch/index.html",
+    "main.a3d3528d.css.map": "/project-three-mywatch/static/css/main.a3d3528d.css.map",
+    "main.eb614833.js.map": "/project-three-mywatch/static/js/main.eb614833.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a3d3528d.css",
+    "static/js/main.eb614833.js"
+  ]
+}
