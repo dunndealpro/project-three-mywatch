@@ -23,7 +23,7 @@ console.log(props.result)
 
     let itemImg
     let title = searchedDetails.name || searchedDetails.title
-    const API_KEY = "a72c1d466153d06b65f2879b369031d8"
+    const API_KEY = process.env.REACT_APP_API_KEY 
 
     if (searchedDetails.backdrop_path) {
         itemImg = `https://image.tmdb.org/t/p/original${searchedDetails.backdrop_path}`

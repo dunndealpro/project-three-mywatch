@@ -14,7 +14,7 @@ export default function LandingPoster(props) {
     const [searchedDetails, setSearchedDetails] = useState([])
     const [searchedCredits, setSearchedCredits] = useState([])
 
-    const API_KEY = "a72c1d466153d06b65f2879b369031d8"
+    const API_KEY = process.env.REACT_APP_API_KEY 
 
     // let trending1Url
 

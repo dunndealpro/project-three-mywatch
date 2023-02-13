@@ -35,9 +35,8 @@ export default function App() {
 
 
 
-  const API_KEY = "a72c1d466153d06b65f2879b369031d8"
 
-
+  const API_KEY = process.env.REACT_APP_API_KEY 
 
   const trendingUrl = `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
   const searchUrl = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${search}&page=1&include_adult=false`
