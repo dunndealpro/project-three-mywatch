@@ -103,7 +103,7 @@ export default function WatchedItem(props) {
 
     return (
         <>
-            <Card className="m-2" style={{ width: '18rem' }}>
+            <Card className="m-2 bg-light" style={{ width: '18rem' }}>
                 <Card.Title className="m-2 fw-bold">{title}</Card.Title>
                 <Card.Img className="rounded" variant="none" src={itemImg} />
                 <Button style={{backgroundColor: 'rgb(43, 112, 168)', borderColor: 'rgb(43, 112, 168)'}} className="m-2"  onClick={() => setModalShow(true)}>Details</Button>

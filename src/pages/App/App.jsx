@@ -7,6 +7,8 @@ import { Routes, Route, useResolvedPath } from 'react-router-dom'
 import { getUser } from '../../utilities/users-service';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
+import './../../style.scss'
+
 import AuthPage from '../AuthPage/AuthPage';
 import LandingPage from '../LandingPage/LandingPage';
 import MyWatchPage from '../MyWatchPage/MyWatchPage';

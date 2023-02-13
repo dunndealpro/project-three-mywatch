@@ -14,7 +14,7 @@ export default function SearchPage(props) {
 
             <div >
                 {/* <Col className='mx-auto' > */}
-                    <Container className='text-center rounded position-relative' style={{ background: 'rgba(250,232,216,1)' }}>
+                    <Container className='text-center rounded position-relative' style={{ background: 'rgba(226,206,153,1)' }}>
                         <SearchBox
                             setSearch={props.setSearch}
                             search={props.search}

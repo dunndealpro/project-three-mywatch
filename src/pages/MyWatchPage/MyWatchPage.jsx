@@ -32,14 +32,14 @@ export default function MyWatchPage(props) {
     return (
         <div className="">
 
-            <Container className="text-center rounded p-2 " style={{ background: 'rgba(250,232,216,1)' }}>
-                <h1 className="p-2 ">myWatch Page</h1>
+            <Container className="text-center rounded p-2 " style={{ background: 'rgba(226,206,153,1)' }}>
+                <h1 className="p-2">myWatch Page</h1>
                 <Tabs
                     // style={{ backgroundColor: 'rgb(43, 112, 168)', borderColor: 'rgb(43, 112, 168)' }}
                     variant="pills"
                     defaultActiveKey="watchedItems"
                     id="fill-tab-example"
-                    className="mb-3 p-3 rounded"
+                    className="mb-3 fs-3 p-3 rounded"
 
                     fill
 

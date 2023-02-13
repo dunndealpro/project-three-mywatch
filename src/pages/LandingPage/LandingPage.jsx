@@ -23,7 +23,7 @@ export default function LandingPage(props) {
 
     return (
         <>
-            <Container className='fluid p-2 rounded position-relative' style={{ background: 'rgba(250,232,216,1)' }}>
+            <Container className='fluid mt-2 p-2 pt-4 rounded position-relative' style={{ background: 'rgba(226,206,153,1)' }}>
                 <Row>
                     <Col className='mx-auto' lg={8}>
 

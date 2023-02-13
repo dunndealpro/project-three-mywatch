@@ -107,7 +107,7 @@ console.log(mwSearch)
 
     return (
         <>
-            <Card className="m-2" style={{ width: '18rem' }}>
+            <Card className="m-2 bg-light" style={{ width: '18rem' }}>
                 <Card.Title className="m-2 fw-bold">{title}</Card.Title>
                 <Card.Img className="rounded" variant="none" src={itemImg} />
                 <Button 
