@@ -17,7 +17,7 @@ export default function NavBar({ user, setUser }) {
 
   let title = "Welcome " + user.name + "!"
 
-let navimg = "/home/dunndeal/code/project-three-mywatchlist/popcorn-icon.png"
+// let navimg = "/home/dunndeal/code/project-three-mywatchlist/popcorn-icon.png"
 
   return (
     <div className="fs-5 bg-secondary align-center" >
