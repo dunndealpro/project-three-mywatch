@@ -113,10 +113,10 @@ export default function SeenSwitch(props) {
     console.log(mwMediaType)
     console.log((props.mediaTypeMw))
 
-    // function clickToClose(){
-    //     props.handleAddToMyWatch(mwID, mwName, mwMediaType, mwTitle, mwHaveSeen)
-    //     props.onHide() 
-    // }
+    function clickToClose(){
+        props.handleAddToMyWatch(mwID, mwName, mwMediaType, mwTitle, mwHaveSeen)
+        props.onHide() 
+    }
 
     // console.log(mwMediaType)
 
@@ -149,9 +149,9 @@ export default function SeenSwitch(props) {
                         <Row>
                             <Button 
                             style={{backgroundColor: 'rgb(43, 112, 168)', borderColor: 'rgb(43, 112, 168)'}} 
-                            className=" btn-sm"
-                             onClick={() => props.handleAddToMyWatch(mwID, mwName, mwMediaType, mwTitle, mwHaveSeen)}
-                            // onClick={clickToClose()}
+                            className="btn-sm"
+                            //  onClick={() => props.handleAddToMyWatch(mwID, mwName, mwMediaType, mwTitle, mwHaveSeen)}
+                            onClick={() => clickToClose()}
                              >Add to MyWatch </Button>
 
                         </Row>

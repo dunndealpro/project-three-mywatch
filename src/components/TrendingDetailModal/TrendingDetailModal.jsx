@@ -230,6 +230,7 @@ export default function SearchDetailModal(props) {
                             handleAddToMyWatch={props.handleAddToMyWatch}
                             searchedDetails={props.searchedDetails}
                             mediaTypeMw={props.result.media_type}
+                            onHide={props.onHide}
                             />
                         </Col>
                         <Col>
