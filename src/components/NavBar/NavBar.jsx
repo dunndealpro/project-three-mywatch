@@ -4,6 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import navbarimg from './popcorn-icon.png'
+
 
 
 export default function NavBar({ user, setUser }) {
@@ -26,7 +28,8 @@ export default function NavBar({ user, setUser }) {
       <Navbar.Brand className=" " href="/">
         
         <img
-              src={require('/home/dunndeal/code/project-three-mywatchlist/src/components/NavBar/popcorn-icon.png')}
+              // src={require('public/popcorn-icon.png')}
+              src = {navbarimg}
               width="50"
               height="50"
               // className="d-inline-block align-top"
