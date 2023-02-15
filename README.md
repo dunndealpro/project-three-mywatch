@@ -51,6 +51,9 @@ This is a MERN Stack SPA where a user can keep track of movies they want to watc
 - Microsoft Paint 
 
 - [The Movie Data Base(TMDB)](https://www.themoviedb.org/)
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 ## Getting Started
 
  - Search for a movie, tv show, or actor.  
