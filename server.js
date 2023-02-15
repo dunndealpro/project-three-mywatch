@@ -40,8 +40,8 @@ module.exports = app
 
 // node ./bin/www
 
-const port = process.env.PORT || 3001;
+// const port = process.env.PORT || 3001;
 
-app.listen(port, function() {
-  console.log(`Express app running on port ${port}`)
-});
+// app.listen(port, function() {
+//   console.log(`Express app running on port ${port}`)
+// });
