@@ -15,6 +15,9 @@ const myWatchSchema = new Schema({
   },
 
   comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+},
+{
+  timestamps: true,
 });
 
 myWatchSchema.statics.getMyWatch = function (mwID, mwName, mwMediaType) {

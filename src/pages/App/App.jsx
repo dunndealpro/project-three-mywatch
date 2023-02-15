@@ -169,13 +169,13 @@ export default function App() {
           <div
             data-bs-spy="scroll"
             data-bs-target="navbar"
-            // data-bs-root-margin="0px 0px -40%"
+            // data-bs-root-margin="0px 0px 40px"
             data-bs-smooth-scroll="true"
             // data-offset="150"
-            data-bs-offset="0"
+            // data-bs-offset="40100"
             className="scrollspy-navbar position-relative"
             tabIndex="0">
-            <div id="home" className=''>
+            <div id="home" className='position-relative'>
            
               <LandingPage
                 landingPoster={landingPoster}
@@ -193,7 +193,7 @@ export default function App() {
               />             
             </div>
             <hr></hr>
-            <div id="search" >
+            <div id="search" className='position-relative'>
               <SearchPage
                 landingPoster={landingPoster}
                 search={search}
@@ -208,7 +208,7 @@ export default function App() {
               />
             </div>
             <hr></hr>
-            <div className="text-center" id='mywatch' >
+            <div className="text-center position-relative" id='mywatch' >
               <MyWatchPage
                 getWatched={getWatched}
                 watched={watched}

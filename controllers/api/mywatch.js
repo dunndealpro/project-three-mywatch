@@ -119,7 +119,7 @@ async function getWatched(req, res) {
         model: "Comment",
         populate: { path: "author", model: "User" },
       },
-    })
+    }).sort({'tmdBid': 1})
     .populate({
       path: "notWatched",
       populate: {
@@ -127,7 +127,7 @@ async function getWatched(req, res) {
         model: "Comment",
         populate: { path: "author", model: "User" },
       },
-    })
+    }).sort({'tmdBid': -1})
     .populate({
       path: "myActors",
       populate: {
@@ -135,7 +135,7 @@ async function getWatched(req, res) {
         model: "Comment",
         populate: { path: "author", model: "User" },
       },
-    })
+    }).sort({'tmdBid': 1})
     .exec();
 
   let getWatched = user;
