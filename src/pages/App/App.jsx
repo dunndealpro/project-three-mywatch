@@ -22,6 +22,8 @@ import * as myWatchAPI from "../../utilities/myWatch-api"
 
 import { useBootstrapBreakpoints } from 'react-bootstrap/esm/ThemeProvider';
 
+import Footer from '../../components/Footer/Footer';
+
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -217,6 +219,9 @@ export default function App() {
                 handleAddToMyWatch={handleAddToMyWatch}
                 user={user}
               />
+            </div>
+            <div className='sticky-bottom'>
+              <Footer/>
             </div>
            
           </div>

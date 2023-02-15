@@ -22,7 +22,7 @@ export default function NavBar({ user, setUser }) {
 // let navimg = "/home/dunndeal/code/project-three-mywatchlist/popcorn-icon.png"
 
   return (
-    <div className="fs-5 bg-secondary align-center" >
+    <div className="fs-5  align-center" >
 
     <Navbar className="p-2" collapseOnSelect expand="md" id="navbar" sticky="top" style={{ background: 'rgba(0,168,168,1)' }} variant="light">
       <Navbar.Brand className=" " href="/">
