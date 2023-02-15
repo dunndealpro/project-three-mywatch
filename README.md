@@ -56,3 +56,8 @@ This is a MERN Stack SPA where a user can keep track of movies they want to watc
 - Within myWatch section, click on details for more info or remove to remove from myWatch
 
 [Link to Deployed App](https://enigmatic-beach-61745.herokuapp.com/)
+
+## Future Improvements
+
+- add ratings to movies/shows
+- add sorting options to myWatch and Search pages
