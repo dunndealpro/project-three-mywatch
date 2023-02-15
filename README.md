@@ -1,6 +1,4 @@
-# Movie Tracker Read-Me
-
-## Welcome to MyMovies.
+# Welcome to MyMovies - Read Me
 
 This is a MERN Stack SPA where a user can keep track of movies they want to watch. First time users are able to sign up and existing users can login.  Users can search for movies and see a list of results.  Users can click on a search result for additional information and to add the selected movie to their 'MyMovies" list.  Users are able to view their "MyMovies" and remove from movies from thier list after watching. 
 
@@ -43,6 +41,7 @@ This is a MERN Stack SPA where a user can keep track of movies they want to watc
 - Express
 - React
 - Node.js
+- Bootstrap
 - HTML5
 - CSS 3
 - JavaScript ES6
