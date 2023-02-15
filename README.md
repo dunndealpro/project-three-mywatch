@@ -34,6 +34,9 @@ This is a MERN Stack SPA where a user can keep track of movies they want to watc
 - Leave a comment
 
 ![](public/images/p3-comment.PNG)
+- Optimized for Mobile veiwing
+
+![](public/images/p3-mobile.PNG)
 
 ## Technologies Used
 - Mongoose
@@ -55,7 +58,10 @@ This is a MERN Stack SPA where a user can keep track of movies they want to watc
     - view summary, cast, and comments
 - Within myWatch section, click on details for more info or remove to remove from myWatch
 
-[Link to Deployed App](https://enigmatic-beach-61745.herokuapp.com/)
+## [Link to Deployed App](https://enigmatic-beach-61745.herokuapp.com/)
+- use demo account or create your own
+    - user email: demo@user.com
+    - password: 12345
 
 ## Future Improvements
 
