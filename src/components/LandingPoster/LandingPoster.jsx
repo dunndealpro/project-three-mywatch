@@ -1,10 +1,8 @@
+import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
-import TrendingSummaryText from '../TrendingSummaryText/TrendingSummaryText';
 import Container from 'react-bootstrap/Container'
-import SeenSwitch from '../SeenSwitch/SeenSwitch';
 import TrendingDetailModal from '../TrendingDetailModal/TrendingDetailModal';
 import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
 
 
 
@@ -15,15 +13,8 @@ export default function LandingPoster(props) {
     const [searchedCredits, setSearchedCredits] = useState([])
 
     const API_KEY = process.env.REACT_APP_API_KEY 
-
-    // let trending1Url
-
-    // console.log("test  ", props.posterUrl.backdrop_path)
     let trendingUrl = `https://image.tmdb.org/t/p/original/${props.posterUrl.backdrop_path}`
     let trendingTitle
-    let trendingOverview = props.posterUrl.overview
-
-
     if (props.posterUrl.title) {
         trendingTitle = props.posterUrl.title
     } else {

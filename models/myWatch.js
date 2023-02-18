@@ -28,8 +28,4 @@ myWatchSchema.statics.getMyWatch = function (mwID, mwName, mwMediaType) {
   );
 };
 
-// myWatchSchema.CommentSchema.statics.addComment = function () {
-//   return this.findOneAndUpdate({ tmdBid: tmdBid });
-// };
-
 module.exports = mongoose.model("MyWatch", myWatchSchema);

@@ -22,16 +22,8 @@ const userSchema = new Schema(
     },
 
     watched: [{ type: Schema.Types.ObjectId, ref: "MyWatch" }],
-
     notWatched: [{ type: Schema.Types.ObjectId, ref: "MyWatch" }],
-
     myActors: [{type: Schema.Types.ObjectId, ref: "MyWatch"}],
-
-    // myWatch:[{type: Schema.Types.ObjectId, ref: 'myWatchId'}],
-
-    // myMovies: [{type: Schema.Types.ObjectId, ref: 'movieId'}],
-    // myShows: [{type: Schema.Types.ObjectId, ref: 'showId'}],
-    // myActors: [{type: Schema.Types.ObjectId, ref: 'actorId'}],
   },
   {
     timestamps: true,

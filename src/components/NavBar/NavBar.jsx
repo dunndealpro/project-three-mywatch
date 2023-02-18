@@ -1,12 +1,10 @@
-import { Link } from "react-router-dom"
-import * as userService from '../../utilities/users-service';
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+
+import * as userService from '../../utilities/users-service';
+
 import navbarimg from './popcorn-icon.png'
-
-
 
 export default function NavBar({ user, setUser }) {
 
@@ -19,20 +17,14 @@ export default function NavBar({ user, setUser }) {
 
   let title = "Welcome " + user.name + "!"
 
-// let navimg = "/home/dunndeal/code/project-three-mywatchlist/popcorn-icon.png"
-
   return (
-    <div className="fs-5  align-center" >
-
+    <div className="fs-5 bg-secondary align-center" >
     <Navbar className="p-2" collapseOnSelect expand="md" id="navbar" sticky="top" style={{ background: 'rgba(0,168,168,1)' }} variant="light">
-      <Navbar.Brand className=" " href="/">
-        
+      <Navbar.Brand className=" " href="/">        
         <img
-              // src={require('public/popcorn-icon.png')}
               src = {navbarimg}
               width="50"
               height="50"
-              // className="d-inline-block align-top"
               alt="Popcorn Icon"
             />
 
@@ -53,18 +45,8 @@ export default function NavBar({ user, setUser }) {
         <NavDropdown className="position-absolute end-0 me-3" title={title} id="basic-nav-dropdown">
           <NavDropdown.Item onClick={handleLogOut} href="">Logout</NavDropdown.Item>
         </NavDropdown>
-
-
         </Nav>
-        {/* <Nav.Link to="" onClick={handleLogOut}>Log Out</Nav.Link> */}
-
-
-
       </Navbar.Collapse>
-
-
-      {/* <Nav.Item className="me-3">Welcome, {user.name}</Nav.Item> */}
-
     </Navbar >
     </div>
   )

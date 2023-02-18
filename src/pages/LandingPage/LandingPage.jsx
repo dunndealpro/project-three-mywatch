@@ -27,7 +27,7 @@ export default function LandingPage(props) {
                 <Row>
                     <Col className='mx-auto' lg={8}>
 
-                        <div className='fs-1 text-center'>Welcome To myWatch!</div>
+                        <div className='fs-1 text-center'>Welcome To myWatch!!!</div>
                         {/* <div className='fs-3 text-center'>(witty comment goes here)</div> */}
                         <Container className='text-center '>
                             <div className='fs-2'>Trending Today</div>
