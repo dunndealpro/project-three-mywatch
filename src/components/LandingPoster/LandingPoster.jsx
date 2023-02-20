@@ -21,8 +21,6 @@ export default function LandingPoster(props) {
         trendingTitle = props.posterUrl.name
     }
 
-    console.log()
-
     async function getSearchInfo() {
         if (props.result.media_type === "movie") {
             let searchedDetailsUrl = `https://api.themoviedb.org/3/movie/${props.result.id}?api_key=${API_KEY}&language=en-US`
