@@ -1,33 +1,25 @@
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import SummaryText from '../SummaryText/SummaryText';
-import Container from 'react-bootstrap/Container'
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button';
-import { useEffect, useState } from 'react';
-import SeenSwitch from '../SeenSwitch/SeenSwitch';
-import DetailModal from '../DetailModal/DetailModal';
+import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
+import { useState } from 'react';
 
+import SummaryText from '../SummaryText/SummaryText';
 
 export default function SearchResult(props) {
-
-    console.log(props.result.known_for)
-
     const [display, setDisplay] = useState("I have not seen this")
     const [seen, setSeen] = useState()
-
+    
     let searchImg = `https://image.tmdb.org/t/p/original/${props.result.backdrop_path}`
     let mwID = props.result.id
     let title
     let summary
     let haveSeen
-
+    
     let mwMediaType = props.result.media_type
     let mwTitle = props.result.title
     let mwName = props.result.name
-
+    let mwHaveSeen = seen
+    
     if (props.result.backdrop_path) {
         searchImg = `https://image.tmdb.org/t/p/original/${props.result.backdrop_path}`
     } else if (props.result.profile_path) {
@@ -37,7 +29,6 @@ export default function SearchResult(props) {
     if (props.result.overview) {
         summary = props.result.overview
     } else if (props.result.known_for_department) {
-        // summary = props.result.known_for_department
         summary = "Known for their " + props.result.known_for_department
     } else {
         summary = "no info available"
@@ -53,7 +44,6 @@ export default function SearchResult(props) {
         haveSeen = e.target.checked
         console.log(haveSeen)
         if (haveSeen) {
-            console.log("true? ", haveSeen)
             setDisplay("I have seen this",)
             setSeen(true)
 
@@ -61,13 +51,8 @@ export default function SearchResult(props) {
             setDisplay("I have not see this")
             setSeen(false)
         }
-        console.log("State: ", display)
-        console.log("haveSeen? ", haveSeen)
         return (haveSeen)
     }
-
-    let mwHaveSeen = seen
-    console.log(mwMediaType)
 
     mwName = mwName || mwTitle
 

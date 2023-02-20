@@ -16,36 +16,19 @@ export function addToMyWatch(mwID, mwName, mwMediaType, mwTitle, mwHaveSeen){
 }
 
 export function getWatched(){
-    console.log("My Watch step 2")
     return sendRequest(`${BASE_URL}/mywatch/`, 'GET', )
 }
 
 export function addComment(userInfo, tmdBid, comment){
-    console.log("Add Comment Step 2")
-    console.log(userInfo)
-    console.log( comment)
-    return sendRequest(`${BASE_URL}/${tmdBid}/comment`, 'POST', { author: userInfo, content: comment })
+       return sendRequest(`${BASE_URL}/${tmdBid}/comment`, 'POST', { author: userInfo, content: comment })
 }
 
 export function deleteFromMyWatch(tmdBid){
-    console.log("remove from mywatch step 2", tmdBid)
     return sendRequest(`${BASE_URL}/${tmdBid}`, 'DELETE', {tmdBid: tmdBid })
 
 }
 
 export function getComments(tmdBid){
-    console.log("still getting comments")
     return sendRequest(`${BASE_URL}/${tmdBid}/comment`, 'GET')
 
 }
-
-// export function getNextWatchMovies(){
-//     console.log("Next Watch step 2")
-//     return sendRequest(`${BASE_URL}/movies/`, 'GET',  )
-// }
-
-// export function getMyMovies(){
-//     console.log("My Movies stuff -")
-//     return sendRequest(`${BASE_URL}/movies/`, 'GET',  )
-// }
-

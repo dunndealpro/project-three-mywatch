@@ -38,7 +38,6 @@ export async function signUp(userData) {
   export async function login(credentials) {
     // Delegate the AJAX request to the users-api.js
     // module.
-    console.log("login?")
     const token = await usersAPI.login(credentials);
     localStorage.setItem('token', token);
     return getUser();

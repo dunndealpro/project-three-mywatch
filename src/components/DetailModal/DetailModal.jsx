@@ -12,6 +12,9 @@ import CommentCard from '../CommentCard/CommentCard';
 import PersonCard from '../PersonCard/PersonCard';
 import "./DetailModal.css"
 
+import * as myWatchAPI from "../../utilities/myWatch-api"
+
+
 export default function DetailModal(props) {
 
     const [comment, setComment] = useState("")
@@ -50,11 +53,16 @@ export default function DetailModal(props) {
         img = `https://image.tmdb.org/t/p/original${props.watchedDetails.profile_path}`
     }
 
+
     async function handleAddComment(e) {
         e.preventDefault()
+        let tmdBid = props.watchedDetails.id
+        let userInfo = props.user._id
+         await myWatchAPI.addComment(userInfo, tmdBid, comment)
         setComment("")
         props.getWatched()
     }
+
 
     function handleChange(evt) {
         setComment(

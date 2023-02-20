@@ -1,40 +1,29 @@
-import SearchBox from '../../components/SearchBox/SearchBox';
-import SummaryText from '../../components/SummaryText/SummaryText';
-import SearchResults from '../../components/SearchResults/SearchResults';
 import Container from 'react-bootstrap/Container'
 
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-
+import SearchBox from '../../components/SearchBox/SearchBox';
+import SearchResults from '../../components/SearchResults/SearchResults';
 
 export default function SearchPage(props) {
 
     return (
         <>
-
             <div >
-                {/* <Col className='mx-auto' > */}
-                    <Container className='text-center rounded position-relative' style={{ background: 'rgba(226,206,153,1)' }}>
-                        <SearchBox
-                            setSearch={props.setSearch}
-                            search={props.search}
-                            getSearch={props.getSearch}
-                        />
-                        <SearchResults
-                            searchResults={props.searchResults}
-                            handleAddToMyWatch={props.handleAddToMyWatch}
-                            mwSearch={props.mwSearch}
-                            watched={props.watched}
-                            notWatched={props.notWatched}
-                            myActors={props.myActors}
-                        />
-
-                    </Container>
-
-                {/* </Col> */}
+                <Container className='text-center rounded position-relative' style={{ background: 'rgba(226,206,153,1)' }}>
+                    <SearchBox
+                        setSearch={props.setSearch}
+                        search={props.search}
+                        getSearch={props.getSearch}
+                    />
+                    <SearchResults
+                        searchResults={props.searchResults}
+                        handleAddToMyWatch={props.handleAddToMyWatch}
+                        mwSearch={props.mwSearch}
+                        watched={props.watched}
+                        notWatched={props.notWatched}
+                        myActors={props.myActors}
+                    />
+                </Container>
             </div>
         </>
-
-
     )
 }
