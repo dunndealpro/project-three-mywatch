@@ -14,11 +14,9 @@ import "./DetailModal.css"
 
 import * as myWatchAPI from "../../utilities/myWatch-api"
 
-
 export default function DetailModal(props) {
 
     const [comment, setComment] = useState("")
-
     let header2 = ""
     let img
     let release = props.watchedDetails.release_date || props.watchedDetails.last_air_date
